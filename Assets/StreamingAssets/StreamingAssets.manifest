@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 331886377
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: coredomain/gamedomain/levels
+      Dependencies: {}
+    Info_1:
+      Name: coredomain/gamedomain/gamestatedomain/lobbydomain/lobbyui
+      Dependencies: {}
+    Info_2:
+      Name: coredomain/gamedomain/gamestatedomain/maingamedomain/maingameui
+      Dependencies: {}
+    Info_3:
+      Name: coredomain/gamedomain/gamestatedomain/maingamedomain/playerspaceship
+      Dependencies: {}
+    Info_4:
+      Name: coredomain/gamedomain/gamestatedomain/maingamedomain/playerbullet
+      Dependencies: {}
+    Info_5:
+      Name: coredomain/gamedomain/gamestatedomain/maingamedomain/enemies
+      Dependencies: {}
