@@ -16,9 +16,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<GameKeyboardInputsModule>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<GameSpeedService>().AsSingle().NonLazy();
 
             Container.BindInterfacesTo<MainGameUiModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<PlayerSpaceshipModule>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<FloorModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<EnemiesModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<PlayerBulletModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<ScoreModule>().AsSingle().NonLazy();
@@ -31,7 +33,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             Container.BindFactory<PoolData, GuardEnemiesPool, GuardEnemiesPool.Factory>().AsSingle().NonLazy();
             Container.BindFactory<MainGameStateEnterData, EnterMainGameStateCommand, EnterMainGameStateCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<ExitMainGameStateCommand, ExitMainGameStateCommand.Factory>().AsSingle().NonLazy();
-            Container.BindInterfacesTo<GameSpeedService>().AsSingle().NonLazy();
             Container.BindFactory<float, ArrowKeysInputChangedCommand, ArrowKeysInputChangedCommand.Factory>().AsSingle().NonLazy();
 
         }

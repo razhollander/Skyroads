@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/Floor/FloorCreator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/LevelKeyboardInputs/GameKeyboardInputsModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Services/GameSpeed/GameSpeedService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -94,7 +95,7 @@
       <workItem from="1702039717535" duration="2798000" />
       <workItem from="1702042609832" duration="5538000" />
       <workItem from="1702110276539" duration="934000" />
-      <workItem from="1702111554212" duration="1658000" />
+      <workItem from="1702111554212" duration="5601000" />
     </task>
     <servers />
   </component>
@@ -116,6 +117,77 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Commands/EnterMainGameStateCommand.cs</url>
+          <line>41</line>
+          <properties documentPath="C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads\Assets\CoreDomain\GameDomain\GameStateDomain\MainGameDomain\Scripts\Commands\EnterMainGameStateCommand.cs" initialLine="41" containingFunctionPresentation="method 'Execute'">
+            <startOffsets>
+              <option value="2084" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2147" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/Floor/FloorModule.cs</url>
+          <line>20</line>
+          <properties documentPath="C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads\Assets\CoreDomain\GameDomain\GameStateDomain\MainGameDomain\Scripts\Modules\Floor\FloorModule.cs" initialLine="20" containingFunctionPresentation="method 'StartMovement'">
+            <startOffsets>
+              <option value="695" />
+            </startOffsets>
+            <endOffsets>
+              <option value="727" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Commands/EnterMainGameStateCommand.cs</url>
+          <line>40</line>
+          <properties documentPath="C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads\Assets\CoreDomain\GameDomain\GameStateDomain\MainGameDomain\Scripts\Commands\EnterMainGameStateCommand.cs" initialLine="40" containingFunctionPresentation="method 'Execute'">
+            <startOffsets>
+              <option value="2044" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2071" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Services/GameSpeed/GameSpeedService.cs</url>
+          <line>22</line>
+          <properties documentPath="C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads\Assets\CoreDomain\GameDomain\GameStateDomain\MainGameDomain\Scripts\Services\GameSpeed\GameSpeedService.cs" initialLine="22" containingFunctionPresentation="method 'LoadGameSpeedData'">
+            <startOffsets>
+              <option value="903" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1057" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Commands/EnterMainGameStateCommand.cs</url>
+          <line>44</line>
+          <properties documentPath="C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads\Assets\CoreDomain\GameDomain\GameStateDomain\MainGameDomain\Scripts\Commands\EnterMainGameStateCommand.cs" initialLine="44" containingFunctionPresentation="method 'Execute'">
+            <startOffsets>
+              <option value="2327" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2425" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

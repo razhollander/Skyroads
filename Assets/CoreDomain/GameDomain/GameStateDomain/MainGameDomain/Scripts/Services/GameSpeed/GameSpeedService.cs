@@ -8,8 +8,8 @@ public class GameSpeedService : IGameSpeedService
     private const string GameSpeedSettingsAssetName = "GameSpeedData";
 
     public bool IsBoosting { get; private set; }
-    public float CurrentGameSpeed { get; private set; }
-
+    public float CurrentGameSpeed => IsBoosting ? _currentGameBaseSpeed : _gameSpeedConfigData.BoostSpeedMultiplier * _currentGameBaseSpeed;
+    private float _currentGameBaseSpeed;
     private GameSpeedData _gameSpeedConfigData;
     private readonly IAssetBundleLoaderService _assetBundleLoaderService;
 
@@ -18,13 +18,19 @@ public class GameSpeedService : IGameSpeedService
         _assetBundleLoaderService = assetBundleLoaderService;
     }
 
-    public void LoadLevels()
+    public void LoadGameSpeedData()
     {
         _gameSpeedConfigData = _assetBundleLoaderService.LoadScriptableObjectAssetFromBundle<GameSpeedData>(GameSpeedAssetBundlePath, GameSpeedSettingsAssetName);
-    } 
-    public void ChangeBoostMode(bool isOn)
+        _currentGameBaseSpeed = _gameSpeedConfigData.BaseSpeed;
+    }
+
+    public void SetCurrentBaseSpeed(float newSpeed)
     {
-        IsBoosting = isOn; 
-        CurrentGameSpeed = IsBoosting ? _gameSpeedConfigData.BaseSpeed : _gameSpeedConfigData.BoostSpeedMultiplier * _gameSpeedConfigData.BaseSpeed;
+        _currentGameBaseSpeed = newSpeed;
+    }
+    
+    public void SetBoostMode(bool isOn)
+    {
+        IsBoosting = isOn;
     }
 }

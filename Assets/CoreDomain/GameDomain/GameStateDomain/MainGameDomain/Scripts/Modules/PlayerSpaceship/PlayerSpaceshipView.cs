@@ -9,6 +9,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _rotationLerpFactor = 0.5f;
         private float _currentZRotation = 0;
+        
         private void RotateOnZAxis(float zRotation)
         {
             _rendererTransform.rotation = Quaternion.Euler(0,0,zRotation);

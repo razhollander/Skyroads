@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8370964532538092928}
   - component: {fileID: 6347175177934691879}
   - component: {fileID: 2802620777958702670}
+  - component: {fileID: 557626828400239386}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -26,14 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4742648305595355632}
-  m_LocalRotation: {x: 0.68259805, y: 0, z: 0, w: 0.7307941}
-  m_LocalPosition: {x: -2.4276626, y: -0.14494133, z: 5.9837527}
-  m_LocalScale: {x: 0.2023, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.33, z: 5.9837527}
+  m_LocalScale: {x: 10, y: 100, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 86.094, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &8370964532538092928
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98,3 +99,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &557626828400239386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742648305595355632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49ba87f0c464b9429f0d6a46ed7a1af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 6347175177934691879}

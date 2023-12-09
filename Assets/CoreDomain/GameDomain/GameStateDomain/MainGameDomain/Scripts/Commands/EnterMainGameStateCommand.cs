@@ -16,13 +16,17 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         private readonly ILevelsService _levelsService;
         private readonly IEnemiesModule _enemiesModule;
         private readonly IAudioService _audioService;
+        private readonly IFloorModule _floorModule;
+        private readonly IGameSpeedService _gameSpeedService;
 
         public EnterMainGameStateCommand(MainGameStateEnterData stateEnterData, IMainGameUiModule mainGameUiModule, IPlayerSpaceshipModule playerSpaceshipModule,
-            ILevelsService levelsService, IEnemiesModule enemiesModule, IAudioService audioService)
+            ILevelsService levelsService, IEnemiesModule enemiesModule, IAudioService audioService, IFloorModule floorModule, IGameSpeedService gameSpeedService)
         {
             _stateEnterData = stateEnterData;
             _mainGameUiModule = mainGameUiModule;
             _playerSpaceshipModule = playerSpaceshipModule;
+            _floorModule = floorModule;
+            _gameSpeedService = gameSpeedService;
             _levelsService = levelsService;
             _enemiesModule = enemiesModule;
             _audioService = audioService;
@@ -32,7 +36,10 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         {
             //var enterData = _stateEnterData;
             //_mainGameUiModule.CreateMainGameUi();
+            _gameSpeedService.LoadGameSpeedData();
             _playerSpaceshipModule.CreatePlayerSpaceship();
+            _floorModule.CreateFloor();
+            _floorModule.StartMovement(_gameSpeedService.CurrentGameSpeed);
             //var levelData = _levelsService.GetLevelData(enterData.Level);
             //_enemiesModule.StartEnemiesWavesSequence(levelData.EnemiesWaveSequenceData);
             _audioService.PlayAudio(AudioClipName.ThemeSongName, AudioChannelType.Master, AudioPlayType.Loop);
