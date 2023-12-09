@@ -364,15 +364,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Distance: 3.21
   Height: 1.57
-  HeightDamping: 2
+  HeightDamping: 4
   RotationDamping: 3
+  DistanceDamping: 4
   _target: {fileID: 0}
   _zoomInConfig:
     Height: 1.57
     Distance: 3.21
   _zoomOutConfig:
-    Height: 3
-    Distance: 6.21
+    Height: 1.7
+    Distance: 4.5
 --- !u!1 &874522567
 GameObject:
   m_ObjectHideFlags: 0

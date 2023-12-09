@@ -13,14 +13,16 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.GameKeybo
         private readonly GameInputActions _gameInputActions;
         private readonly ArrowKeysInputChangedCommand.Factory _arrowKeysInputChangedCommandFactory;
         private readonly SpaceButtonClickedCommand.Factory _spaceButtonClickedCommandFactory;
+        private readonly SpaceButtonReleasedCommand.Factory _spaceButtonReleasedCommandFactory;
         private float _arrowsDirectionValue;
 
-        public GameKeyboardInputsModule(IUpdateSubscriptionService updateSubscriptionService, GameInputActions gameInputActions, ArrowKeysInputChangedCommand.Factory arrowKeysInputChangedCommandFactory, SpaceButtonClickedCommand.Factory spaceButtonClickedCommandFactory)
+        public GameKeyboardInputsModule(IUpdateSubscriptionService updateSubscriptionService, GameInputActions gameInputActions, ArrowKeysInputChangedCommand.Factory arrowKeysInputChangedCommandFactory, SpaceButtonClickedCommand.Factory spaceButtonClickedCommandFactory, SpaceButtonReleasedCommand.Factory spaceButtonReleasedCommandFactory)
         {
             _updateSubscriptionService = updateSubscriptionService;
             _gameInputActions = gameInputActions;
             _arrowKeysInputChangedCommandFactory = arrowKeysInputChangedCommandFactory;
             _spaceButtonClickedCommandFactory = spaceButtonClickedCommandFactory;
+            _spaceButtonReleasedCommandFactory = spaceButtonReleasedCommandFactory;
 
             AddListeners();
         }
@@ -54,12 +56,19 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.GameKeybo
         private void AddListeners()
         {
             _gameInputActions.MainGame.Boost.started += OnSpaceBarClicked;
+            _gameInputActions.MainGame.Boost.canceled += OnSpaceBarReleased;
             _updateSubscriptionService.RegisterUpdatable(this);
+        }
+
+        private void OnSpaceBarReleased(InputAction.CallbackContext obj)
+        {
+            _spaceButtonReleasedCommandFactory.Create().Execute();
         }
 
         private void RemoveListeners()
         {
             _gameInputActions.MainGame.Boost.started -= OnSpaceBarClicked;
+            _gameInputActions.MainGame.Boost.canceled -= OnSpaceBarReleased;
             _updateSubscriptionService.UnregisterUpdatable(this);
         }
 

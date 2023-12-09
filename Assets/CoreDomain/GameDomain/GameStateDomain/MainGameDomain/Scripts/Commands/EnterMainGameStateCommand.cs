@@ -43,7 +43,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _floorModule.CreateFloor();
             _cameraService.SetCameraFollowTarget(GameCameraType.World, _playerSpaceshipModule.PlayerSpaceShipTransform);
             _cameraService.SetCameraZoom(GameCameraType.World, true);
-            _floorModule.StartMovement(_gameSpeedService.CurrentGameSpeed);
+            _floorModule.StartMovement();
             //var levelData = _levelsService.GetLevelData(enterData.Level);
             //_enemiesModule.StartEnemiesWavesSequence(levelData.EnemiesWaveSequenceData);
             _audioService.PlayAudio(AudioClipName.ThemeSongName, AudioChannelType.Master, AudioPlayType.Loop);

@@ -6,19 +6,20 @@ using UnityEngine;
 public class FloorModule : IFloorModule, IUpdatable
 {
     private readonly IUpdateSubscriptionService _updateSubscriptionService;
+    private readonly IGameSpeedService _gameSpeedService;
     private readonly FloorCreator _floorCreator;
     private FloorView _floorView;
-    private float _floorMovementSpeed = 0;
-
-    public FloorModule(IAssetBundleLoaderService assetBundleLoaderService, IUpdateSubscriptionService updateSubscriptionService)
+    private float FloorMovementSpeed => _gameSpeedService.CurrentGameSpeed;
+    
+    public FloorModule(IAssetBundleLoaderService assetBundleLoaderService, IUpdateSubscriptionService updateSubscriptionService, IGameSpeedService gameSpeedService)
     {
         _updateSubscriptionService = updateSubscriptionService;
+        _gameSpeedService = gameSpeedService;
         _floorCreator = new FloorCreator(assetBundleLoaderService);
     }
 
-    public void StartMovement(float speed)
+    public void StartMovement()
     {
-        ChangeFloorMovementSpeed(speed);
         _updateSubscriptionService.RegisterUpdatable(this);
     }
     
@@ -32,13 +33,8 @@ public class FloorModule : IFloorModule, IUpdatable
         _floorView = _floorCreator.CreateFloor();
     }
 
-    public void ChangeFloorMovementSpeed(float speed)
-    {
-        _floorMovementSpeed = speed;
-    }
-
     public void ManagedUpdate()
     {
-        _floorView.ChangeOffset(_floorMovementSpeed * Time.deltaTime);
+        _floorView.ChangeOffset(FloorMovementSpeed * Time.deltaTime);
     }
 }

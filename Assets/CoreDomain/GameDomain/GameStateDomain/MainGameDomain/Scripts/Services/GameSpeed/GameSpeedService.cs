@@ -8,7 +8,7 @@ public class GameSpeedService : IGameSpeedService
     private const string GameSpeedSettingsAssetName = "GameSpeedData";
 
     public bool IsBoosting { get; private set; }
-    public float CurrentGameSpeed => IsBoosting ? _currentGameBaseSpeed : _gameSpeedConfigData.BoostSpeedMultiplier * _currentGameBaseSpeed;
+    public float CurrentGameSpeed => IsBoosting ? _gameSpeedConfigData.BoostSpeedMultiplier * _currentGameBaseSpeed : _currentGameBaseSpeed;
     private float _currentGameBaseSpeed;
     private GameSpeedData _gameSpeedConfigData;
     private readonly IAssetBundleLoaderService _assetBundleLoaderService;

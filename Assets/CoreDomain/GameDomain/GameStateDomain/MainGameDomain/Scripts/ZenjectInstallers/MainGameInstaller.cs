@@ -24,8 +24,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             Container.BindInterfacesTo<EnemiesModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<PlayerBulletModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<ScoreModule>().AsSingle().NonLazy();
+            
             Container.BindFactory<float, JoystickDraggedCommand, JoystickDraggedCommand.Factory>().AsSingle().NonLazy();
+            Container.BindFactory<GameBoostModeChangedCommandData, GameBoostModeChangedCommand, GameBoostModeChangedCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<SpaceButtonClickedCommand, SpaceButtonClickedCommand.Factory>().AsSingle().NonLazy();
+            Container.BindFactory<SpaceButtonReleasedCommand, SpaceButtonReleasedCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<BackButtonClickedCommand, BackButtonClickedCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<PlayerBulletHitCommandData, PlayerBulletHitCommand, PlayerBulletHitCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<PoolData, PlayerBulletPool, PlayerBulletPool.Factory>().AsSingle().NonLazy();
