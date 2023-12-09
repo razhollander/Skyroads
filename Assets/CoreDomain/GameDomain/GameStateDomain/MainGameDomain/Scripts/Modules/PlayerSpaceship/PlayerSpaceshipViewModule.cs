@@ -17,6 +17,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         private float _spaceshipMaxRotationAngle = 20;
         private readonly IUpdateSubscriptionService _updateSubscriptionService;
 
+        public Transform PlayerSpaceShipTransform => _playerSpaceshipView.transform;
+
         public PlayerSpaceshipViewModule(IDeviceScreenService deviceScreenService, IUpdateSubscriptionService updateSubscriptionService)
         {
             _deviceScreenService = deviceScreenService;

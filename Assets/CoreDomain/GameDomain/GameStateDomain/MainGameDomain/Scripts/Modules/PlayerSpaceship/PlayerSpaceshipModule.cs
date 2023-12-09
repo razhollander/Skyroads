@@ -5,6 +5,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 {
     public class PlayerSpaceshipModule : IPlayerSpaceshipModule
     {
+        public Transform PlayerSpaceShipTransform => _playerSpaceshipViewModule.PlayerSpaceShipTransform;
+        
         private readonly PlayerSpaceshipCreator _playerSpaceshipCreator;
         private readonly PlayerSpaceshipViewModule _playerSpaceshipViewModule;
         private PlayerSpaceshipData _playerSpaceshipData;

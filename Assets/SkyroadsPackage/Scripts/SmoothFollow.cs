@@ -7,7 +7,26 @@ public class SmoothFollow : MonoBehaviour
     public float HeightDamping = 2.0f;
     public float RotationDamping = 3.0f;
     [SerializeField] private Transform _target;
+    [SerializeField] private ZoomConfig _zoomInConfig;
+    [SerializeField] private ZoomConfig _zoomOutConfig;
 
+    public void SetTarget(Transform target)
+    {
+        _target = target;
+    }
+
+    public void ChangeZoom(bool isZoomIn)
+    {
+        var zoomConfig = isZoomIn ? _zoomInConfig : _zoomOutConfig;
+        ChangeZoom(zoomConfig);
+    }
+    
+    private void ChangeZoom(ZoomConfig zoomConfig)
+    {
+        Height = zoomConfig.Height;
+        Distance = zoomConfig.Distance;
+    }
+    
     private void LateUpdate()
     {
         // Early out if we don't have a target
@@ -42,4 +61,12 @@ public class SmoothFollow : MonoBehaviour
         // Always look at the target
         transform.LookAt(_target);
     }
+    
+    [System.Serializable]
+    private class ZoomConfig
+    {
+        public float Height;
+        public float Distance;
+    }
 }
+

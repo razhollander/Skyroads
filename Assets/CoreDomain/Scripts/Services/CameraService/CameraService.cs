@@ -56,5 +56,43 @@ namespace CoreDomain.Services
 
             return _cameras[type].transform.position;
         }
+
+        public void SetCameraFollowTarget(GameCameraType type, Transform target)
+        {
+            if (!_cameras.ContainsKey(type))
+            {
+                LogService.LogError("camera not found");
+                return;
+            }
+
+            var smoothFollow = _cameras[type].transform.GetComponent<SmoothFollow>();
+
+            if (!smoothFollow)
+            {
+                LogService.LogError("smooth follow not found");
+                return;
+            }
+            
+            smoothFollow.SetTarget(target);
+        }
+
+        public void SetCameraZoom(GameCameraType type, bool isZoomIn)
+        {
+            if (!_cameras.ContainsKey(type))
+            {
+                LogService.LogError("camera not found");
+                return;
+            }
+
+            var smoothFollow = _cameras[type].transform.GetComponent<SmoothFollow>();
+
+            if (!smoothFollow)
+            {
+                LogService.LogError("smooth follow not found");
+                return;
+            }
+            
+            smoothFollow.ChangeZoom(isZoomIn);
+        }
     }
 }

@@ -18,15 +18,17 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         private readonly IAudioService _audioService;
         private readonly IFloorModule _floorModule;
         private readonly IGameSpeedService _gameSpeedService;
+        private readonly ICameraService _cameraService;
 
         public EnterMainGameStateCommand(MainGameStateEnterData stateEnterData, IMainGameUiModule mainGameUiModule, IPlayerSpaceshipModule playerSpaceshipModule,
-            ILevelsService levelsService, IEnemiesModule enemiesModule, IAudioService audioService, IFloorModule floorModule, IGameSpeedService gameSpeedService)
+            ILevelsService levelsService, IEnemiesModule enemiesModule, IAudioService audioService, IFloorModule floorModule, IGameSpeedService gameSpeedService, ICameraService cameraService)
         {
             _stateEnterData = stateEnterData;
             _mainGameUiModule = mainGameUiModule;
             _playerSpaceshipModule = playerSpaceshipModule;
             _floorModule = floorModule;
             _gameSpeedService = gameSpeedService;
+            _cameraService = cameraService;
             _levelsService = levelsService;
             _enemiesModule = enemiesModule;
             _audioService = audioService;
@@ -39,6 +41,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _gameSpeedService.LoadGameSpeedData();
             _playerSpaceshipModule.CreatePlayerSpaceship();
             _floorModule.CreateFloor();
+            _cameraService.SetCameraFollowTarget(GameCameraType.World, _playerSpaceshipModule.PlayerSpaceShipTransform);
+            _cameraService.SetCameraZoom(GameCameraType.World, true);
             _floorModule.StartMovement(_gameSpeedService.CurrentGameSpeed);
             //var levelData = _levelsService.GetLevelData(enterData.Level);
             //_enemiesModule.StartEnemiesWavesSequence(levelData.EnemiesWaveSequenceData);

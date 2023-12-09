@@ -7,7 +7,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
     {
         [SerializeField] private Transform _rendererTransform;
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private float _rotationLerpFactor = 0.5f;
+        [SerializeField] private float _rotationLerpFactor = 5f;
         private float _currentZRotation = 0;
         
         private void RotateOnZAxis(float zRotation)
@@ -22,7 +22,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 
         public void LerpToRotation(float rotation)
         {
-            var newZRotation = Mathf.Lerp(_currentZRotation, rotation, _rotationLerpFactor);
+            var newZRotation = Mathf.Lerp(_currentZRotation, rotation, _rotationLerpFactor * Time.deltaTime);
             _currentZRotation = newZRotation;
             RotateOnZAxis(newZRotation);
         }
