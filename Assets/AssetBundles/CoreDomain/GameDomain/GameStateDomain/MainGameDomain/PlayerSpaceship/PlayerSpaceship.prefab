@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rendererTransform: {fileID: 8678038472708641705}
   _rigidbody: {fileID: 81518532463273495}
+  _rotationLerpFactor: 0.3
 --- !u!65 &1478673539711557968
 BoxCollider:
   m_ObjectHideFlags: 0

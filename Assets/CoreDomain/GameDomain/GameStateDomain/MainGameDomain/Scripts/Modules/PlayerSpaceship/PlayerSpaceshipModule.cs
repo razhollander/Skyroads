@@ -9,10 +9,10 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         private readonly PlayerSpaceshipViewModule _playerSpaceshipViewModule;
         private PlayerSpaceshipData _playerSpaceshipData;
         
-        public PlayerSpaceshipModule(IAssetBundleLoaderService assetBundleLoaderService, IDeviceScreenService deviceScreenService)
+        public PlayerSpaceshipModule(IAssetBundleLoaderService assetBundleLoaderService, IDeviceScreenService deviceScreenService, IUpdateSubscriptionService updateSubscriptionService)
         {
             _playerSpaceshipCreator = new PlayerSpaceshipCreator(assetBundleLoaderService);
-            _playerSpaceshipViewModule = new PlayerSpaceshipViewModule(deviceScreenService);
+            _playerSpaceshipViewModule = new PlayerSpaceshipViewModule(deviceScreenService, updateSubscriptionService);
         }
 
         public void CreatePlayerSpaceship()
@@ -24,12 +24,12 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 
         public void Dispose()
         {
-            _playerSpaceshipViewModule.DestroySpaceSip();
+            _playerSpaceshipViewModule.Dispose();
         }
 
         public void SetSpaceShipMoveDirection(float xDirection)
         {
-            _playerSpaceshipViewModule.SetMoveDirection(xDirection * _playerSpaceshipData.MovementSpeed);
+            _playerSpaceshipViewModule.SetMoveVelocity(xDirection * _playerSpaceshipData.MovementSpeed);
         }
     }
 }

@@ -14,6 +14,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectId" id="2Z8awKP0LMJpDw0hVz3iC6OAg1k" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -68,10 +71,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4272">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8872">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="4272" />
+      <option name="pid" value="8872" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -89,7 +92,9 @@
       <updated>1701806404506</updated>
       <workItem from="1701806407583" duration="911000" />
       <workItem from="1702039717535" duration="2798000" />
-      <workItem from="1702042609832" duration="4233000" />
+      <workItem from="1702042609832" duration="5538000" />
+      <workItem from="1702110276539" duration="934000" />
+      <workItem from="1702111554212" duration="1658000" />
     </task>
     <servers />
   </component>

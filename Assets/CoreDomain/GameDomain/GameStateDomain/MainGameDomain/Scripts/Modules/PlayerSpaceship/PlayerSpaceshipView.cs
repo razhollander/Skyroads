@@ -7,8 +7,9 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
     {
         [SerializeField] private Transform _rendererTransform;
         [SerializeField] private Rigidbody _rigidbody;
-
-        public void RotateOnZAxis(float zRotation)
+        [SerializeField] private float _rotationLerpFactor = 0.5f;
+        private float _currentZRotation = 0;
+        private void RotateOnZAxis(float zRotation)
         {
             _rendererTransform.rotation = Quaternion.Euler(0,0,zRotation);
         }
@@ -16,6 +17,13 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         public void SetVelocity(float xVelocity)
         {
             _rigidbody.velocity = new Vector2(xVelocity, 0);
+        }
+
+        public void LerpToRotation(float rotation)
+        {
+            var newZRotation = Mathf.Lerp(_currentZRotation, rotation, _rotationLerpFactor);
+            _currentZRotation = newZRotation;
+            RotateOnZAxis(newZRotation);
         }
     }
 }
