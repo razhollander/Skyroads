@@ -1,20 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using CoreDomain.Services;
 using UnityEngine;
 using CoreDomain.Utils.Pools;
 
 public class AsteroidsCreator
 {
-    private AsteroidsPool _asteroidsPool;
+    private const string AsteroidsSpawnRateAssetBundlePath = "coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/asteroidsspawnrate";
+    private const string AsteroidsSpawnRateAssetName = "AsteroidsSpawnRateData";
 
-    public AsteroidsCreator(AsteroidsPool.Factory asteroidsPool)
+    private AsteroidsPool _asteroidsPool;
+    private readonly IAssetBundleLoaderService _assetBundleLoaderService;
+
+    public AsteroidsCreator(AsteroidsPool.Factory asteroidsPool, IAssetBundleLoaderService assetBundleLoaderService)
     {
+        _assetBundleLoaderService = assetBundleLoaderService;
         _asteroidsPool = asteroidsPool.Create(new PoolData(10, 5));
         _asteroidsPool.InitPool();
     }
 
-    public AsteroidView CreateEnemy(string enemyAssetName)
+    public AsteroidView CreateAsteroid()
     {
         return _asteroidsPool.Spawn();
+    }
+    public AsteroidsSpawnRateData LoadAsteroidsSpawnRateData()
+    {
+        return _assetBundleLoaderService.LoadScriptableObjectAssetFromBundle<AsteroidsSpawnRateData>(AsteroidsSpawnRateAssetBundlePath, AsteroidsSpawnRateAssetName);
     }
 }
