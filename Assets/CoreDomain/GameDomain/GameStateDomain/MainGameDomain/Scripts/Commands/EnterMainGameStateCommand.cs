@@ -30,11 +30,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
 
         public override async UniTask Execute()
         {
-            var enterData = _stateEnterData;
-            _mainGameUiModule.CreateMainGameUi();
-            _playerSpaceshipModule.CreatePlayerSpaceship(enterData.PlayerName);
-            var levelData = _levelsService.GetLevelData(enterData.Level);
-            _enemiesModule.StartEnemiesWavesSequence(levelData.EnemiesWaveSequenceData);
+            //var enterData = _stateEnterData;
+            //_mainGameUiModule.CreateMainGameUi();
+            _playerSpaceshipModule.CreatePlayerSpaceship();
+            //var levelData = _levelsService.GetLevelData(enterData.Level);
+            //_enemiesModule.StartEnemiesWavesSequence(levelData.EnemiesWaveSequenceData);
             _audioService.PlayAudio(AudioClipName.ThemeSongName, AudioChannelType.Master, AudioPlayType.Loop);
         }
     }

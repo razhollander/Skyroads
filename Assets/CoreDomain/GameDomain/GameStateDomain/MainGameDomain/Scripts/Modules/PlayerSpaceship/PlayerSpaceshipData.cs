@@ -1,12 +1,10 @@
+using UnityEngine;
+
 namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpaceship
 {
-    public class PlayerSpaceshipData
+    [CreateAssetMenu(fileName = "PlaceSpaceShipData", menuName = "Game/PlaceSpaceShip")]
+    public class PlayerSpaceshipData : ScriptableObject
     {
-        public string Name;
-    
-        public PlayerSpaceshipData(string name)
-        {
-            Name = name;
-        }
+        public float MovementSpeed = 5f;
     }
 }

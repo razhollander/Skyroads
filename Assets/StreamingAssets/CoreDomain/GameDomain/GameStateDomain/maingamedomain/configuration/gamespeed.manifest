@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 646235868
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d1590e2c3d90fd18034ff5430aea92cc
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 24e6bb7bba61c1e36b778568b0b714aa
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 0dce72ecdbc741578efda8530b0bc49b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Configuration/GameSpeedData.asset
+Dependencies: []

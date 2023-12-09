@@ -7,12 +7,12 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
     public class MainGameUiModule : IMainGameUiModule
     {
         private readonly JoystickDraggedCommand.Factory _joystickDraggedCommandFactory;
-        private readonly CommandSync<ShootButtonClickedCommand>.Factory _shootButtonClickedCommandFactory;
+        private readonly CommandSync<SpaceButtonClickedCommand>.Factory _shootButtonClickedCommandFactory;
         private readonly CommandSync<BackButtonClickedCommand>.Factory _backButtonClickedCommandFactory;
         private readonly MainGameUiCreator _creator;
         private readonly MainGameUiViewModule _viewModule;
 
-        public MainGameUiModule(IAssetBundleLoaderService assetBundleLoaderService, JoystickDraggedCommand.Factory joystickDraggedCommandFactory, ShootButtonClickedCommand.Factory shootButtonClickedCommandFactory, BackButtonClickedCommand.Factory backButtonClickedCommandFactory)
+        public MainGameUiModule(IAssetBundleLoaderService assetBundleLoaderService, JoystickDraggedCommand.Factory joystickDraggedCommandFactory, SpaceButtonClickedCommand.Factory shootButtonClickedCommandFactory, BackButtonClickedCommand.Factory backButtonClickedCommandFactory)
         {
             _joystickDraggedCommandFactory = joystickDraggedCommandFactory;
             _shootButtonClickedCommandFactory = shootButtonClickedCommandFactory;

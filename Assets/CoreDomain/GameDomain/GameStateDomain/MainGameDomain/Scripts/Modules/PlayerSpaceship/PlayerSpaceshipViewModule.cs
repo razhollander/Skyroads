@@ -17,34 +17,15 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
             _deviceScreenService = deviceScreenService;
             _screenBoundsInWorldSpace = deviceScreenService.ScreenBoundsInWorldSpace;
         }
-
-        public Vector3 SpaceshipShootPosition => _playerSpaceshipView.ShootPosition;
-
+        
         public void Setup(PlayerSpaceshipView playerSpaceshipView)
         {
             _playerSpaceshipView = playerSpaceshipView;
-            _playerSpaceFromBounds = _playerSpaceshipView.SpriteBounds.size.x * 0.5f;
 
             var startPosition = _screenBoundsInWorldSpace * RelativeToScreenCenterStartPosition + _deviceScreenService.ScreenCenterPointInWorldSpace;
             _playerSpaceshipView.transform.position = startPosition;
         }
-        
-        public void MoveSpaceship(float xDirection)
-        {
-           var playerMoveDelta = xDirection * Time.deltaTime * _playerSpaceshipView.Speed;
-           var playerNewXPos = _playerSpaceshipView.transform.position.x + playerMoveDelta;
 
-           if (IsInScreenHorizontalBounds(playerNewXPos, _playerSpaceFromBounds))
-           {
-               _playerSpaceshipView.MoveToXPosition(playerNewXPos);
-           }
-        }
-        
-        public void SetSpaceShipName(string name)
-        {
-            _playerSpaceshipView.SetName(name);
-        }
-        
         private bool IsInScreenHorizontalBounds(float xValue, float spaceKeptFromBounds)
         {
             return -_screenBoundsInWorldSpace.x + spaceKeptFromBounds < xValue && xValue < _screenBoundsInWorldSpace.x - spaceKeptFromBounds;
@@ -53,6 +34,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         public void DestroySpaceSip()
         {
             GameObject.Destroy(_playerSpaceshipView.gameObject);
+        }
+
+        public void SetMoveDirection(float xDirection)
+        {
+            _playerSpaceshipView.SetVelocity(xDirection);
         }
     }
 }

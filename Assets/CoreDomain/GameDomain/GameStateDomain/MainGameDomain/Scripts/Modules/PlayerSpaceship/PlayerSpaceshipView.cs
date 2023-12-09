@@ -5,30 +5,17 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 {
     public class PlayerSpaceshipView : MonoBehaviour
     {
-        [SerializeField] public float Speed = 5f;
-        [SerializeField] private SpriteRenderer PlayerSpriteRenderer;
-        [SerializeField] private Transform _shootPositionTransform;
-        [SerializeField] private TextMeshPro _playerNameText;
+        [SerializeField] private Transform _rendererTransform;
+        [SerializeField] private Rigidbody _rigidbody;
 
-        public Vector3 ShootPosition => _shootPositionTransform.position;
-        public Bounds SpriteBounds => PlayerSpriteRenderer.bounds;
-        
-        private Transform _transform;
-
-        private void Awake()
+        public void RotateOnZAxis(float zRotation)
         {
-            _transform = transform;
+            _rendererTransform.rotation = Quaternion.Euler(0,0,zRotation);
         }
 
-        public void SetName(string playerName)
+        public void SetVelocity(float xVelocity)
         {
-            _playerNameText.text = playerName;
-        }
-
-        public void MoveToXPosition(float xPosition)
-        {
-            var transformPosition = _transform.position;
-            _transform.position = new Vector3(xPosition, transformPosition.y, transformPosition.z);
+            _rigidbody.velocity = new Vector2(xVelocity, 0);
         }
     }
 }

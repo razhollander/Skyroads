@@ -7,15 +7,13 @@ namespace CoreDomain.GameDomain
     public class GameInitiator : MonoBehaviour
     {
         private IStateMachineService _stateMachine;
-        private LobbyGameState.Factory _lobbyGameStateFactory;
-        private ILevelsService _levelsService;
+        private MainGameState.Factory _mainGameStateFactory;
 
         [Inject]
-        private void Setup(IStateMachineService stateMachine, LobbyGameState.Factory lobbyGameStateFactory, ILevelsService levelsService)
+        private void Setup(IStateMachineService stateMachine, MainGameState.Factory mainGameStateFactory)
         {
             _stateMachine = stateMachine;
-            _lobbyGameStateFactory = lobbyGameStateFactory;
-            _levelsService = levelsService;
+            _mainGameStateFactory = mainGameStateFactory;
         }
 
         private void Start()
@@ -27,12 +25,12 @@ namespace CoreDomain.GameDomain
 
         private void InitializeServices()
         {
-            _levelsService.LoadLevels();
+            
         }
 
         private void EnterToLobbyGameState()
         {
-            _stateMachine.EnterInitialGameState(_lobbyGameStateFactory.Create());
+            _stateMachine.EnterInitialGameState(_mainGameStateFactory.Create(new MainGameStateEnterData()));
         }
 
         private void UpdateApplicationSettings()

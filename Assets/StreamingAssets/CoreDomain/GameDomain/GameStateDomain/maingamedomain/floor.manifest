@@ -1,0 +1,38 @@
+ManifestFileVersion: 0
+CRC: 1256890041
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 864a4f3de5131cc8ebb18af9ef8c99cb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9f038e2107905ee470a690157f0621b1
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Floor/Floor.prefab
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Floor/sci_fi_002_Normal.tga
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Floor/sci_fi_002_Emissive.tga
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Floor/sci_fi_002_Specular.tga
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Floor/FlootMaterial.mat
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Floor/sci_fi_002_Diffuse.tga
+Dependencies: []

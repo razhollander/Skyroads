@@ -1,8 +1,8 @@
 {
-    "name": "GameInputs2",
+    "name": "GameInputActions",
     "maps": [
         {
-            "name": "BaseSpace",
+            "name": "MainGame",
             "id": "544ef46b-18cc-4d3a-add4-6d59b65f7890",
             "actions": [
                 {
@@ -15,18 +15,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
+                    "name": "LeftClick",
                     "type": "Button",
-                    "id": "e8cb7f92-ef70-4a97-99ec-49ba9588d993",
+                    "id": "2ee8a845-0813-4116-82de-7279d0747cb9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LeftClick",
+                    "name": "Boost",
                     "type": "Button",
-                    "id": "2ee8a845-0813-4116-82de-7279d0747cb9",
+                    "id": "0631faf3-31e3-4afc-beee-be89e1377f80",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -48,7 +48,7 @@
                 {
                     "name": "negative",
                     "id": "c06c8053-df66-431d-afa9-aea5c56337eb",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -59,7 +59,7 @@
                 {
                     "name": "positive",
                     "id": "80ffe72b-8d39-4542-bf50-141e0c54cfd1",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -69,23 +69,23 @@
                 },
                 {
                     "name": "",
-                    "id": "4cd61d5b-dd0d-4f92-9194-c20c6b559e60",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "7ec6af3e-80c1-4e36-b174-b577a1f3b470",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "LeftClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c424506-fc7e-429d-a73b-8676fbe3df13",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(pressPoint=0.5,behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

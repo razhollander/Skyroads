@@ -32,7 +32,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.LobbyDomain.Modules.LobbyUi
 
         private void SwitchToQuickGameState()
         {
-            _stateMachineService.SwitchState(_mainGameStateFactory.Create(new MainGameStateEnterData(_viewModule.GetPlayerName(), _viewModule.GetSelectedLevel())));
+            _stateMachineService.SwitchState(_mainGameStateFactory.Create(new MainGameStateEnterData()));
         }
     }
 }

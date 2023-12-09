@@ -24,7 +24,7 @@ public partial class @GameInputActions : IInputActionCollection2, IDisposable
     ""name"": ""GameInputActions"",
     ""maps"": [
         {
-            ""name"": ""BaseSpace"",
+            ""name"": ""MainGame"",
             ""id"": ""544ef46b-18cc-4d3a-add4-6d59b65f7890"",
             ""actions"": [
                 {
@@ -37,18 +37,18 @@ public partial class @GameInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""LeftClick"",
                     ""type"": ""Button"",
-                    ""id"": ""e8cb7f92-ef70-4a97-99ec-49ba9588d993"",
+                    ""id"": ""2ee8a845-0813-4116-82de-7279d0747cb9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LeftClick"",
+                    ""name"": ""Boost"",
                     ""type"": ""Button"",
-                    ""id"": ""2ee8a845-0813-4116-82de-7279d0747cb9"",
+                    ""id"": ""0631faf3-31e3-4afc-beee-be89e1377f80"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -70,7 +70,7 @@ public partial class @GameInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""c06c8053-df66-431d-afa9-aea5c56337eb"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -81,7 +81,7 @@ public partial class @GameInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""80ffe72b-8d39-4542-bf50-141e0c54cfd1"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -91,23 +91,23 @@ public partial class @GameInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4cd61d5b-dd0d-4f92-9194-c20c6b559e60"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7ec6af3e-80c1-4e36-b174-b577a1f3b470"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c424506-fc7e-429d-a73b-8676fbe3df13"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press(pressPoint=0.5,behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -204,11 +204,11 @@ public partial class @GameInputActions : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // BaseSpace
-        m_BaseSpace = asset.FindActionMap("BaseSpace", throwIfNotFound: true);
-        m_BaseSpace_Move = m_BaseSpace.FindAction("Move", throwIfNotFound: true);
-        m_BaseSpace_Shoot = m_BaseSpace.FindAction("Shoot", throwIfNotFound: true);
-        m_BaseSpace_LeftClick = m_BaseSpace.FindAction("LeftClick", throwIfNotFound: true);
+        // MainGame
+        m_MainGame = asset.FindActionMap("MainGame", throwIfNotFound: true);
+        m_MainGame_Move = m_MainGame.FindAction("Move", throwIfNotFound: true);
+        m_MainGame_LeftClick = m_MainGame.FindAction("LeftClick", throwIfNotFound: true);
+        m_MainGame_Boost = m_MainGame.FindAction("Boost", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
@@ -271,54 +271,54 @@ public partial class @GameInputActions : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // BaseSpace
-    private readonly InputActionMap m_BaseSpace;
-    private IBaseSpaceActions m_BaseSpaceActionsCallbackInterface;
-    private readonly InputAction m_BaseSpace_Move;
-    private readonly InputAction m_BaseSpace_Shoot;
-    private readonly InputAction m_BaseSpace_LeftClick;
-    public struct BaseSpaceActions
+    // MainGame
+    private readonly InputActionMap m_MainGame;
+    private IMainGameActions m_MainGameActionsCallbackInterface;
+    private readonly InputAction m_MainGame_Move;
+    private readonly InputAction m_MainGame_LeftClick;
+    private readonly InputAction m_MainGame_Boost;
+    public struct MainGameActions
     {
         private @GameInputActions m_Wrapper;
-        public BaseSpaceActions(@GameInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_BaseSpace_Move;
-        public InputAction @Shoot => m_Wrapper.m_BaseSpace_Shoot;
-        public InputAction @LeftClick => m_Wrapper.m_BaseSpace_LeftClick;
-        public InputActionMap Get() { return m_Wrapper.m_BaseSpace; }
+        public MainGameActions(@GameInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_MainGame_Move;
+        public InputAction @LeftClick => m_Wrapper.m_MainGame_LeftClick;
+        public InputAction @Boost => m_Wrapper.m_MainGame_Boost;
+        public InputActionMap Get() { return m_Wrapper.m_MainGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(BaseSpaceActions set) { return set.Get(); }
-        public void SetCallbacks(IBaseSpaceActions instance)
+        public static implicit operator InputActionMap(MainGameActions set) { return set.Get(); }
+        public void SetCallbacks(IMainGameActions instance)
         {
-            if (m_Wrapper.m_BaseSpaceActionsCallbackInterface != null)
+            if (m_Wrapper.m_MainGameActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_BaseSpaceActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_BaseSpaceActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_BaseSpaceActionsCallbackInterface.OnMove;
-                @Shoot.started -= m_Wrapper.m_BaseSpaceActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_BaseSpaceActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_BaseSpaceActionsCallbackInterface.OnShoot;
-                @LeftClick.started -= m_Wrapper.m_BaseSpaceActionsCallbackInterface.OnLeftClick;
-                @LeftClick.performed -= m_Wrapper.m_BaseSpaceActionsCallbackInterface.OnLeftClick;
-                @LeftClick.canceled -= m_Wrapper.m_BaseSpaceActionsCallbackInterface.OnLeftClick;
+                @Move.started -= m_Wrapper.m_MainGameActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_MainGameActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_MainGameActionsCallbackInterface.OnMove;
+                @LeftClick.started -= m_Wrapper.m_MainGameActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_MainGameActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_MainGameActionsCallbackInterface.OnLeftClick;
+                @Boost.started -= m_Wrapper.m_MainGameActionsCallbackInterface.OnBoost;
+                @Boost.performed -= m_Wrapper.m_MainGameActionsCallbackInterface.OnBoost;
+                @Boost.canceled -= m_Wrapper.m_MainGameActionsCallbackInterface.OnBoost;
             }
-            m_Wrapper.m_BaseSpaceActionsCallbackInterface = instance;
+            m_Wrapper.m_MainGameActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
                 @LeftClick.started += instance.OnLeftClick;
                 @LeftClick.performed += instance.OnLeftClick;
                 @LeftClick.canceled += instance.OnLeftClick;
+                @Boost.started += instance.OnBoost;
+                @Boost.performed += instance.OnBoost;
+                @Boost.canceled += instance.OnBoost;
             }
         }
     }
-    public BaseSpaceActions @BaseSpace => new BaseSpaceActions(this);
+    public MainGameActions @MainGame => new MainGameActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -376,11 +376,11 @@ public partial class @GameInputActions : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
-    public interface IBaseSpaceActions
+    public interface IMainGameActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
         void OnLeftClick(InputAction.CallbackContext context);
+        void OnBoost(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

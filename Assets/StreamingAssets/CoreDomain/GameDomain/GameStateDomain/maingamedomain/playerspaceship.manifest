@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 126891919
+CRC: 4290531624
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6084b78ff1f7dfe420e03ce2642cce29
+    Hash: c4a3dee989bdb514a5f1ab7ef3debb9d
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b376e9f6786c798c0d37ef6351b00961
+    Hash: a36def674a19ea80b7fcc57c675ea46e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -19,62 +19,28 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 28
   Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 50
+- Class: 54
   Script: {instanceID: 0}
-- Class: 61
+- Class: 65
   Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+- Class: 111
+  Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: d4e9a230541dd4e73a9074d9d9de33f0, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 115
   Script: {instanceID: 0}
-- Class: 128
-  Script: {instanceID: 0}
-- Class: 212
-  Script: {instanceID: 0}
-- Class: 213
-  Script: {instanceID: 0}
-- Class: 224
-  Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers:
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.FaceInfo_Legacy
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.FontAssetCreationSettings
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.KerningTable
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_Character
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_FontFeatureTable
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_FontWeightPair
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphValueRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.VertexGradient
-- AssemblyName: UnityEngine.CoreModule
-  ClassName: UnityEngine.Events.PersistentCallGroup
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.FaceInfo
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.Glyph
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.GlyphMetrics
-- AssemblyName: UnityEngine.TextCoreFontEngineModule
-  ClassName: UnityEngine.TextCore.GlyphRect
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/Spaceship_NS.tga
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/SpaceshipMaterial.mat
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/Spaceship
+  - FBX.fbx
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/Spaceship_DG.tga
 - Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/PlayerSpaceship.prefab
-- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/PlayerSpaceshipSprite.png
 Dependencies: []

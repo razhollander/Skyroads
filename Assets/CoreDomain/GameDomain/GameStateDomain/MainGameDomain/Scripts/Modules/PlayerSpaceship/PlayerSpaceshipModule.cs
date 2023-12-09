@@ -5,24 +5,21 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 {
     public class PlayerSpaceshipModule : IPlayerSpaceshipModule
     {
-        private readonly PlayerSpaceshipCreator _createPlayerSpaceship;
+        private readonly PlayerSpaceshipCreator _playerSpaceshipCreator;
         private readonly PlayerSpaceshipViewModule _playerSpaceshipViewModule;
         private PlayerSpaceshipData _playerSpaceshipData;
-
-        public Vector3 SpaceShipShootPosition => _playerSpaceshipViewModule.SpaceshipShootPosition;
-
+        
         public PlayerSpaceshipModule(IAssetBundleLoaderService assetBundleLoaderService, IDeviceScreenService deviceScreenService)
         {
-            _createPlayerSpaceship = new PlayerSpaceshipCreator(assetBundleLoaderService);
+            _playerSpaceshipCreator = new PlayerSpaceshipCreator(assetBundleLoaderService);
             _playerSpaceshipViewModule = new PlayerSpaceshipViewModule(deviceScreenService);
         }
 
-        public void CreatePlayerSpaceship(string name)
+        public void CreatePlayerSpaceship()
         {
-            _playerSpaceshipData = new PlayerSpaceshipData(name);
-            var playerSpaceshipView = _createPlayerSpaceship.CreatePlayerSpaceship();
+            _playerSpaceshipData = _playerSpaceshipCreator.LoadPlayerSpaceShipData();
+            var playerSpaceshipView = _playerSpaceshipCreator.CreatePlayerSpaceship();
             _playerSpaceshipViewModule.Setup(playerSpaceshipView);
-            _playerSpaceshipViewModule.SetSpaceShipName(_playerSpaceshipData.Name);
         }
 
         public void Dispose()
@@ -30,9 +27,9 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
             _playerSpaceshipViewModule.DestroySpaceSip();
         }
 
-        public void MoveSpaceship(float xDirection)
+        public void SetSpaceShipMoveDirection(float xDirection)
         {
-            _playerSpaceshipViewModule.MoveSpaceship(xDirection);
+            _playerSpaceshipViewModule.SetMoveDirection(xDirection * _playerSpaceshipData.MovementSpeed);
         }
     }
 }

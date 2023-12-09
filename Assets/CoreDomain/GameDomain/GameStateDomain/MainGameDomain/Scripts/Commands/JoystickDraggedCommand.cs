@@ -16,7 +16,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Commands
 
         public override void Execute()
         {
-            _playerSpaceshipModule.MoveSpaceship(_dragValue);
         }
     }
 }
