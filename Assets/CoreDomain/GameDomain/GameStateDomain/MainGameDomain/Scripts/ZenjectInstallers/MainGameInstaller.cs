@@ -22,6 +22,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             Container.BindInterfacesTo<PlayerSpaceshipModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<FloorModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<EnemiesModule>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<AsteroidsModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<PlayerBulletModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<ScoreModule>().AsSingle().NonLazy();
             
@@ -34,6 +35,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             Container.BindFactory<PoolData, PlayerBulletPool, PlayerBulletPool.Factory>().AsSingle().NonLazy();
             Container.BindFactory<PoolData, BeeEnemiesPool, BeeEnemiesPool.Factory>().AsSingle().NonLazy();
             Container.BindFactory<PoolData, GuardEnemiesPool, GuardEnemiesPool.Factory>().AsSingle().NonLazy();
+            Container.BindFactory<PoolData, AsteroidsPool, AsteroidsPool.Factory>().AsSingle().NonLazy();
             Container.BindFactory<MainGameStateEnterData, EnterMainGameStateCommand, EnterMainGameStateCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<ExitMainGameStateCommand, ExitMainGameStateCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<float, ArrowKeysInputChangedCommand, ArrowKeysInputChangedCommand.Factory>().AsSingle().NonLazy();

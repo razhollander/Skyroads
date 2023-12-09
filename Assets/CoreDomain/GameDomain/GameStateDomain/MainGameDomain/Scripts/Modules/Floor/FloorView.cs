@@ -6,6 +6,9 @@ using UnityEngine;
 public class FloorView : MonoBehaviour
 {
     [SerializeField] private Renderer _renderer;
+    [SerializeField] private Transform _startPoint;
+    
+    public Transform StartPoint => _startPoint;
 
     private Material _floorMaterial;
     private Vector2 _currentTextureOffset=Vector2.zero;

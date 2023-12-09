@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FloorModule : IFloorModule, IUpdatable
 {
+    public Transform FloorStartPoint => _floorView.StartPoint;
+
     private readonly IUpdateSubscriptionService _updateSubscriptionService;
     private readonly IGameSpeedService _gameSpeedService;
     private readonly FloorCreator _floorCreator;
