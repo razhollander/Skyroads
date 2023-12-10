@@ -1,6 +1,7 @@
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Enemies;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameUi;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpaceship;
+using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score;
 using CoreDomain.Scripts.Utils.Command;
 using CoreDomain.Services;
 using CoreDomain.Services.GameStates;
@@ -20,9 +21,20 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         private readonly IGameSpeedService _gameSpeedService;
         private readonly ICameraService _cameraService;
         private readonly IAsteroidsModule _asteroidsModule;
+        private readonly IScoreModule _scoreModule;
 
-        public EnterMainGameStateCommand(MainGameStateEnterData stateEnterData, IMainGameUiModule mainGameUiModule, IPlayerSpaceshipModule playerSpaceshipModule,
-            ILevelsService levelsService, IEnemiesModule enemiesModule, IAudioService audioService, IFloorModule floorModule, IGameSpeedService gameSpeedService, ICameraService cameraService, IAsteroidsModule asteroidsModule)
+        public EnterMainGameStateCommand(
+            MainGameStateEnterData stateEnterData,
+            IMainGameUiModule mainGameUiModule,
+            IPlayerSpaceshipModule playerSpaceshipModule,
+            ILevelsService levelsService,
+            IEnemiesModule enemiesModule,
+            IAudioService audioService,
+            IFloorModule floorModule,
+            IGameSpeedService gameSpeedService,
+            ICameraService cameraService,
+            IAsteroidsModule asteroidsModule,
+            IScoreModule scoreModule)
         {
             _stateEnterData = stateEnterData;
             _mainGameUiModule = mainGameUiModule;
@@ -31,6 +43,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _gameSpeedService = gameSpeedService;
             _cameraService = cameraService;
             _asteroidsModule = asteroidsModule;
+            _scoreModule = scoreModule;
             _levelsService = levelsService;
             _enemiesModule = enemiesModule;
             _audioService = audioService;
@@ -49,6 +62,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _cameraService.SetCameraZoom(GameCameraType.World, true);
             _floorModule.StartMovement();
             _asteroidsModule.StartSpawning();
+            _scoreModule.LoadScoreConfig();
+            _scoreModule.StartCountingScore();
             //var levelData = _levelsService.GetLevelData(enterData.Level);
             //_enemiesModule.StartEnemiesWavesSequence(levelData.EnemiesWaveSequenceData);
             _audioService.PlayAudio(AudioClipName.ThemeSongName, AudioChannelType.Master, AudioPlayType.Loop);

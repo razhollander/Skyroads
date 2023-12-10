@@ -1,7 +1,11 @@
+using UnityEngine;
+
 namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score
 {
-    public class ScoreData
+    [CreateAssetMenu(fileName = "GameScoreData", menuName = "Game/GameScore")]
+    public class ScoreData : ScriptableObject
     {
-        public int PlayerScore;
+        public float GainEverySecondScore;
+        public float BoostScoreMultiplier;
     }
 }

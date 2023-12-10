@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1539254168
+CRC: 2841218584
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -34,4 +34,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_10:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/asteroidsspawnrate
+      Dependencies: {}
+    Info_11:
+      Name: coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/gamescore
       Dependencies: {}
