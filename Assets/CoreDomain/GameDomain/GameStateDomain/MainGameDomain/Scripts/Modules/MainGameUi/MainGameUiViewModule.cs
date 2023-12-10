@@ -20,5 +20,10 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         {
             _mainGameUiView.UpdateScore(newScore);
         }
+
+        public void UpdateTimePlaying(int timePlaying)
+        {
+            _mainGameUiView.UpdateTimePlaying(timePlaying);
+        }
     }
 }

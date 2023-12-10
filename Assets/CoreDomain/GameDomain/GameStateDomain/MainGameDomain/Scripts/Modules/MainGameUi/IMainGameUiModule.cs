@@ -5,5 +5,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         void UpdateScore(int newScore);
         void CreateMainGameUi();
         void Dispose();
+        void UpdateTimePlaying(int timePlaying);
     }
 }

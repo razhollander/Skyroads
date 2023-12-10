@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2876415042
+CRC: 3238927716
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c91166ff7ce9c1cd036f67be659f0ddb
+    Hash: 41163d2432a346bba6cd7beba3f99566
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 4a9716aee874c0ecdcd37835fcd00a2f
+    Hash: 931f9ad2456690141c302c87e0a38db2
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -20,15 +20,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d9063a047b72c47f6b4e3ff6225e50c4, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 78f5f6ce13c4ad341b7d111940abfc5e, type: 3}
 - Class: 114
@@ -38,8 +32,6 @@ ClassTypes:
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
-  Script: {instanceID: 0}
-- Class: 213
   Script: {instanceID: 0}
 - Class: 222
   Script: {instanceID: 0}
@@ -79,17 +71,7 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.TextCoreFontEngineModule
   ClassName: UnityEngine.TextCore.GlyphRect
 - AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.AnimationTriggers
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.ColorBlock
-- AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.Navigation
-- AssemblyName: UnityEngine.UI
-  ClassName: UnityEngine.UI.SpriteState
 Assets:
 - Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/MainGameUi/MainGameUiCanvas.prefab
 Dependencies: []

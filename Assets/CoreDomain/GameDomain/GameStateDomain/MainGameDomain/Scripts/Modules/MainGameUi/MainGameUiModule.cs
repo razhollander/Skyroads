@@ -30,5 +30,10 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         {
             _viewModule.DestroyMainGameUiView();
         }
+
+        public void UpdateTimePlaying(int timePlaying)
+        {
+            _viewModule.UpdateTimePlaying(timePlaying);
+        }
     }
 }

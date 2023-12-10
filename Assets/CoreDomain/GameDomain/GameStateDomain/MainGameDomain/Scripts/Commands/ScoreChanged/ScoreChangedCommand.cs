@@ -23,6 +23,5 @@ public class ScoreChangedCommand : CommandSyncOneParameter<ScoreChangedCommandDa
     {
         _scoreModule.AddScore(_commandData.ScoreAdded);
         _mainGameUiModule.UpdateScore(_scoreModule.PlayerScore);
-        Debug.Log(_scoreModule.PlayerScore);
     }
 }

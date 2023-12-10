@@ -25,6 +25,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             Container.BindInterfacesTo<PlayerBulletModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<ScoreModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<AsteroidsModule>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<TimePlayingModule>().AsSingle().NonLazy();
             
             Container.BindFactory<float, JoystickDraggedCommand, JoystickDraggedCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<GameBoostModeChangedCommandData, GameBoostModeChangedCommand, GameBoostModeChangedCommand.Factory>().AsSingle().NonLazy();
@@ -41,6 +42,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             Container.BindFactory<SpawnAsteroidCommand, SpawnAsteroidCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<float, ArrowKeysInputChangedCommand, ArrowKeysInputChangedCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<ScoreChangedCommandData, ScoreChangedCommand, ScoreChangedCommand.Factory>().AsSingle().NonLazy();
+            Container.BindFactory<int, TimePlayingChangedCommand, TimePlayingChangedCommand.Factory>().AsSingle().NonLazy();
 
         }
     }

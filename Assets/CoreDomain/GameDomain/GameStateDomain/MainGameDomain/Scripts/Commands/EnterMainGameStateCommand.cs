@@ -22,6 +22,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         private readonly ICameraService _cameraService;
         private readonly IAsteroidsModule _asteroidsModule;
         private readonly IScoreModule _scoreModule;
+        private readonly ITimePlayingModule _timePlayingModule;
 
         public EnterMainGameStateCommand(
             MainGameStateEnterData stateEnterData,
@@ -34,7 +35,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             IGameSpeedService gameSpeedService,
             ICameraService cameraService,
             IAsteroidsModule asteroidsModule,
-            IScoreModule scoreModule)
+            IScoreModule scoreModule,
+            ITimePlayingModule timePlayingModule)
         {
             _stateEnterData = stateEnterData;
             _mainGameUiModule = mainGameUiModule;
@@ -44,6 +46,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _cameraService = cameraService;
             _asteroidsModule = asteroidsModule;
             _scoreModule = scoreModule;
+            _timePlayingModule = timePlayingModule;
             _levelsService = levelsService;
             _enemiesModule = enemiesModule;
             _audioService = audioService;
@@ -65,6 +68,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _asteroidsModule.StartSpawning();
             _scoreModule.LoadScoreConfig();
             _scoreModule.StartCountingScore();
+            _timePlayingModule.StartTimer();
             //var levelData = _levelsService.GetLevelData(enterData.Level);
             //_enemiesModule.StartEnemiesWavesSequence(levelData.EnemiesWaveSequenceData);
             _audioService.PlayAudio(AudioClipName.ThemeSongName, AudioChannelType.Master, AudioPlayType.Loop);
