@@ -19,9 +19,10 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         private readonly IFloorModule _floorModule;
         private readonly IGameSpeedService _gameSpeedService;
         private readonly ICameraService _cameraService;
+        private readonly IAsteroidsModule _asteroidsModule;
 
         public EnterMainGameStateCommand(MainGameStateEnterData stateEnterData, IMainGameUiModule mainGameUiModule, IPlayerSpaceshipModule playerSpaceshipModule,
-            ILevelsService levelsService, IEnemiesModule enemiesModule, IAudioService audioService, IFloorModule floorModule, IGameSpeedService gameSpeedService, ICameraService cameraService)
+            ILevelsService levelsService, IEnemiesModule enemiesModule, IAudioService audioService, IFloorModule floorModule, IGameSpeedService gameSpeedService, ICameraService cameraService, IAsteroidsModule asteroidsModule)
         {
             _stateEnterData = stateEnterData;
             _mainGameUiModule = mainGameUiModule;
@@ -29,6 +30,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _floorModule = floorModule;
             _gameSpeedService = gameSpeedService;
             _cameraService = cameraService;
+            _asteroidsModule = asteroidsModule;
             _levelsService = levelsService;
             _enemiesModule = enemiesModule;
             _audioService = audioService;
@@ -39,11 +41,14 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             //var enterData = _stateEnterData;
             //_mainGameUiModule.CreateMainGameUi();
             _gameSpeedService.LoadGameSpeedData();
+            _asteroidsModule.LoadData();
+
             _playerSpaceshipModule.CreatePlayerSpaceship();
             _floorModule.CreateFloor();
             _cameraService.SetCameraFollowTarget(GameCameraType.World, _playerSpaceshipModule.PlayerSpaceShipTransform);
             _cameraService.SetCameraZoom(GameCameraType.World, true);
             _floorModule.StartMovement();
+            _asteroidsModule.StartSpawning();
             //var levelData = _levelsService.GetLevelData(enterData.Level);
             //_enemiesModule.StartEnemiesWavesSequence(levelData.EnemiesWaveSequenceData);
             _audioService.PlayAudio(AudioClipName.ThemeSongName, AudioChannelType.Master, AudioPlayType.Loop);

@@ -2,8 +2,9 @@ using UnityEngine;
 
 public interface IFloorModule
 {
-    public Transform FloorStartPoint { get; }
+    float FloorHalfWidth { get; }
+    Vector3 FloorStartPoint { get; }
     void CreateFloor();
-    public void StartMovement();
-    public void StopMovement();
+    void StartMovement();
+    void StopMovement();
 }

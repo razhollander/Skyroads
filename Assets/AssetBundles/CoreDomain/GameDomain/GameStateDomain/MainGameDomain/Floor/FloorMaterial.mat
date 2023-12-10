@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FlootMaterial
+  m_Name: FloorMaterial
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _EMISSION
@@ -41,11 +41,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 2800000, guid: a014c1d3d536d744492f5f77ab827480, type: 3}
-        m_Scale: {x: 1, y: 10}
+        m_Scale: {x: 1, y: 20}
         m_Offset: {x: 0, y: 3}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: a2acd5db4b23dcc4d8e37abba17649af, type: 3}
-        m_Scale: {x: 1, y: 10}
+        m_Scale: {x: 1, y: 20}
         m_Offset: {x: 0, y: 3}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: fa6721dc812dae74cbe3fbb47529c3f6, type: 3}

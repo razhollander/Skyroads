@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class FloorModule : IFloorModule, IUpdatable
 {
-    public Transform FloorStartPoint => _floorView.StartPoint;
+    public Vector3 FloorStartPoint => _floorView.StartPoint.position;
+    public float FloorHalfWidth => _floorView.StartPoint.position.x - _floorView.CornerPoint.position.x;
 
     private readonly IUpdateSubscriptionService _updateSubscriptionService;
     private readonly IGameSpeedService _gameSpeedService;
     private readonly FloorCreator _floorCreator;
     private FloorView _floorView;
-    private float FloorMovementSpeed => _gameSpeedService.CurrentGameSpeed;
     
     public FloorModule(IAssetBundleLoaderService assetBundleLoaderService, IUpdateSubscriptionService updateSubscriptionService, IGameSpeedService gameSpeedService)
     {
@@ -37,6 +37,6 @@ public class FloorModule : IFloorModule, IUpdatable
 
     public void ManagedUpdate()
     {
-        _floorView.ChangeOffset(FloorMovementSpeed * Time.deltaTime);
+        _floorView.ChangeOffset(_gameSpeedService.CurrentGameSpeed * Time.deltaTime);
     }
 }

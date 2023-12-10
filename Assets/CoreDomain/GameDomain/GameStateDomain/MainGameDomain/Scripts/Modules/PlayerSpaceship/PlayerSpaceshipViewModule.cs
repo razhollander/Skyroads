@@ -30,8 +30,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         {
             _playerSpaceshipView = playerSpaceshipView;
 
-            var startPosition = _screenBoundsInWorldSpace * RelativeToScreenCenterStartPosition + _deviceScreenService.ScreenCenterPointInWorldSpace;
-            _playerSpaceshipView.transform.position = startPosition;
+            //var startPosition = _screenBoundsInWorldSpace * RelativeToScreenCenterStartPosition + _deviceScreenService.ScreenCenterPointInWorldSpace;
+            _playerSpaceshipView.transform.position = new Vector3(0, 2.5f, 0);
             RegisterListeners();
         }
         

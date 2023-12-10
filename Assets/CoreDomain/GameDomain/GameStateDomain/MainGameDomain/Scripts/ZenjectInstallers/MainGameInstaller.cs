@@ -22,7 +22,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             Container.BindInterfacesTo<PlayerSpaceshipModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<FloorModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<EnemiesModule>().AsSingle().NonLazy();
-            Container.BindInterfacesTo<AsteroidsModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<PlayerBulletModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<ScoreModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<AsteroidsModule>().AsSingle().NonLazy();
