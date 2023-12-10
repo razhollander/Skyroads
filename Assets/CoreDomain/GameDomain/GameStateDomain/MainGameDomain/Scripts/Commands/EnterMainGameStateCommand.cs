@@ -53,6 +53,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         {
             //var enterData = _stateEnterData;
             //_mainGameUiModule.CreateMainGameUi();
+            _mainGameUiModule.CreateMainGameUi();
             _gameSpeedService.LoadGameSpeedData();
             _asteroidsModule.LoadData();
 

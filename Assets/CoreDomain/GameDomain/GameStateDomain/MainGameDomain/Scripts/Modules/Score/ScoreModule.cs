@@ -14,11 +14,13 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score
         public int PlayerScore => Mathf.FloorToInt(_playerCurrentScore);
         private ScoreData _scoreData;
         private readonly IAssetBundleLoaderService _assetBundleLoaderService;
+        private readonly ScoreChangedCommand.Factory _scoreChangedCommand;
 
-        public ScoreModule(IUpdateSubscriptionService updateSubscriptionService, IAssetBundleLoaderService assetBundleLoaderService)
+        public ScoreModule(IUpdateSubscriptionService updateSubscriptionService, IAssetBundleLoaderService assetBundleLoaderService, ScoreChangedCommand.Factory scoreChangedCommand)
         {
             _updateSubscriptionService = updateSubscriptionService;
             _assetBundleLoaderService = assetBundleLoaderService;
+            _scoreChangedCommand = scoreChangedCommand;
         }
 
         public void LoadScoreConfig()
@@ -49,8 +51,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score
         
         public void ManagedUpdate()
         {
-            AddScore(Time.deltaTime * _scoreGainedEverySecondMultiplier);
-            Debug.Log(PlayerScore);
+            _scoreChangedCommand.Create(new ScoreChangedCommandData(Time.deltaTime * _scoreGainedEverySecondMultiplier)).Execute();
         }
     }
 }

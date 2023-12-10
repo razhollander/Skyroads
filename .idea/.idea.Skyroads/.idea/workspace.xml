@@ -10,6 +10,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/70fff961be83415897c7a30a7cd55d2a136218/13/52cd552f/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Commands/GameBoostMode/GameBoostModeChangedCommandData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Commands/ScoreChanged/ScoreChangedCommandData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Commands/SpaceButtonReleasedCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Commands/SpawnAsteroidCommand.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/Asteroid/AsteroidsCreator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -104,7 +105,7 @@
       <workItem from="1702042609832" duration="5538000" />
       <workItem from="1702110276539" duration="934000" />
       <workItem from="1702111554212" duration="11260000" />
-      <workItem from="1702129418725" duration="10189000" />
+      <workItem from="1702129418725" duration="10905000" />
     </task>
     <servers />
   </component>
