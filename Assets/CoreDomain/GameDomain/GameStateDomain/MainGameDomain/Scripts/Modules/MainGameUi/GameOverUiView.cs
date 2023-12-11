@@ -20,7 +20,7 @@ public class GameOverUiView : MonoBehaviour
         int highScore)
     {
         _scoreText.text = $"Score: {score}";
-        _timePlayedText.text = $"Time Played: {timePlayed}";
+        _timePlayedText.text = $"Seconds Played: {timePlayed}";
         _asteroidsPassedText.text = $"Asteroids Passed: {asteroidsPassed}";
         _highScoreMessageText.text = isNewHighScore ? string.Format(PassedHighScoreMessageFormat, highScore) : string.Format(DidntPassHighScoreMessageFormat, highScore);
     }

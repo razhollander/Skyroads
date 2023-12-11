@@ -17,32 +17,24 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         private readonly MainGameStateEnterData _stateEnterData;
         private readonly IMainGameUiModule _mainGameUiModule;
         private readonly IPlayerSpaceshipModule _playerSpaceshipModule;
-        private readonly ILevelsService _levelsService;
-        private readonly IEnemiesModule _enemiesModule;
         private readonly IAudioService _audioService;
         private readonly IFloorModule _floorModule;
         private readonly IGameSpeedService _gameSpeedService;
         private readonly ICameraService _cameraService;
         private readonly IAsteroidsModule _asteroidsModule;
         private readonly IScoreModule _scoreModule;
-        private readonly ITimePlayingModule _timePlayingModule;
-        private readonly IHighScoreModule _highScoreModule;
         private readonly BeginGameCommand.Factory _beginGameCommand;
 
         public EnterMainGameStateCommand(
             MainGameStateEnterData stateEnterData,
             IMainGameUiModule mainGameUiModule,
             IPlayerSpaceshipModule playerSpaceshipModule,
-            ILevelsService levelsService,
-            IEnemiesModule enemiesModule,
             IAudioService audioService,
             IFloorModule floorModule,
             IGameSpeedService gameSpeedService,
             ICameraService cameraService,
             IAsteroidsModule asteroidsModule,
             IScoreModule scoreModule,
-            ITimePlayingModule timePlayingModule,
-            IHighScoreModule highScoreModule,
             BeginGameCommand.Factory beginGameCommand)
         {
             _stateEnterData = stateEnterData;
@@ -53,33 +45,44 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _cameraService = cameraService;
             _asteroidsModule = asteroidsModule;
             _scoreModule = scoreModule;
-            _timePlayingModule = timePlayingModule;
-            _highScoreModule = highScoreModule;
             _beginGameCommand = beginGameCommand;
-            _levelsService = levelsService;
-            _enemiesModule = enemiesModule;
             _audioService = audioService;
         }
 
         public override async UniTask Execute()
         {
-            _gameSpeedService.LoadGameSpeedData();
-            _asteroidsModule.LoadData();
-            _scoreModule.LoadScoreConfig();
-
-            _mainGameUiModule.CreateMainGameUi();
-            _playerSpaceshipModule.CreatePlayerSpaceship();
-            _floorModule.CreateFloor();
+            LoadData();
+            CreateGameObjects();
+            SetupModules();
             
-            _cameraService.SetCameraFollowTarget(GameCameraType.World, _playerSpaceshipModule.PlayerSpaceShipTransform);
-            _cameraService.SetCameraZoom(GameCameraType.World, true);
-            _asteroidsModule.SetAsteroidsPassedZPosition(_playerSpaceshipModule.PlayerSpaceShipTransform.position.z);
-            _mainGameUiModule.SwitchToBeforeGameView();
             _audioService.PlayAudio(AudioClipName.ThemeSongName, AudioChannelType.Master, AudioPlayType.Loop);
 
             await WaitForAnyKeyPressed();
 
             _beginGameCommand.Create().Execute();
+        }
+
+        private void SetupModules()
+        {
+            _cameraService.SetCameraFollowTarget(GameCameraType.World, _playerSpaceshipModule.PlayerSpaceShipTransform);
+            _cameraService.SetCameraZoom(GameCameraType.World, true);
+            _asteroidsModule.SetAsteroidsPassedZPosition(_playerSpaceshipModule.PlayerSpaceShipTransform.position.z);
+            _mainGameUiModule.SwitchToBeforeGameView();
+            _playerSpaceshipModule.SetXMovementBounds(_floorModule.FloorHalfWidth);
+        }
+
+        private void CreateGameObjects()
+        {
+            _mainGameUiModule.CreateMainGameUi();
+            _playerSpaceshipModule.CreatePlayerSpaceship();
+            _floorModule.CreateFloor();
+        }
+
+        private void LoadData()
+        {
+            _gameSpeedService.LoadGameSpeedData();
+            _asteroidsModule.LoadData();
+            _scoreModule.LoadScoreConfig();
         }
 
         private static async Task WaitForAnyKeyPressed()

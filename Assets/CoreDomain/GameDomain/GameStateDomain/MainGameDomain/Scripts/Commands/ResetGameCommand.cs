@@ -17,6 +17,7 @@ public class ResetGameCommand : CommandSync<ResetGameCommand>
     private readonly IMainGameUiModule _mainGameUiModule;
     private readonly IPlayerSpaceshipModule _playerSpaceshipModule;
     private readonly ICameraService _cameraService;
+    private readonly IGameSpeedService _gameSpeedService;
 
     public ResetGameCommand(
         IFloorModule floorModule,
@@ -26,7 +27,8 @@ public class ResetGameCommand : CommandSync<ResetGameCommand>
         IScoreModule scoreModule,
         IMainGameUiModule mainGameUiModule,
         IPlayerSpaceshipModule playerSpaceshipModule,
-        ICameraService cameraService)
+        ICameraService cameraService,
+        IGameSpeedService gameSpeedService)
     {
         _floorModule = floorModule;
         _asteroidsModule = asteroidsModule;
@@ -36,10 +38,12 @@ public class ResetGameCommand : CommandSync<ResetGameCommand>
         _mainGameUiModule = mainGameUiModule;
         _playerSpaceshipModule = playerSpaceshipModule;
         _cameraService = cameraService;
+        _gameSpeedService = gameSpeedService;
     }
 
     public override void Execute()
     {
+        _gameSpeedService.Reset();
         _asteroidsModule.Reset();
         _scoreModule.ResetScore();
         _timePlayingModule.ResetTimer();

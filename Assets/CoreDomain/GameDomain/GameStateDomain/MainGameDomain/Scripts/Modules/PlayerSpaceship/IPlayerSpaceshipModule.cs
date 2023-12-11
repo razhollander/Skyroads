@@ -10,5 +10,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         public void SetSpaceShipMoveDirection(float xDirection);
         void ResetSpaceShip();
         void EnableSpaceShipMovement(bool isEnabled);
+        void SetXMovementBounds(float positiveXBound);
     }
 }

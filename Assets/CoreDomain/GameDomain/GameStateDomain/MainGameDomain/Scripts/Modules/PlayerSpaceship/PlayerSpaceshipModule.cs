@@ -12,7 +12,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         private readonly PlayerSpaceshipCreator _playerSpaceshipCreator;
         private readonly PlayerSpaceshipViewModule _playerSpaceshipViewModule;
         private PlayerSpaceshipData _playerSpaceshipData;
-        
+
         public PlayerSpaceshipModule(IAssetBundleLoaderService assetBundleLoaderService, IDeviceScreenService deviceScreenService, IUpdateSubscriptionService updateSubscriptionService, PlayerHitCommand.Factory playerHitCommand)
         {
             _playerHitCommand = playerHitCommand;
@@ -36,11 +36,16 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
             }
             else
             {
-                _playerSpaceshipViewModule.SetMoveVelocity(0);
+                _playerSpaceshipViewModule.TrySetMovementVelocity(0);
                 _playerSpaceshipViewModule.UnregisterListeners();
             }
         }
-        
+
+        public void SetXMovementBounds(float positiveXBound)
+        {
+            _playerSpaceshipViewModule.SetXMovementBounds(positiveXBound);
+        }
+
         private void OnSpaceshipCollisionEnter(Collider collision)
         {
             var didCollideWithAsteroid = collision.gameObject.GetComponent<AsteroidView>() != null;
@@ -57,12 +62,12 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 
         public void SetSpaceShipMoveDirection(float xDirection)
         {
-            _playerSpaceshipViewModule.SetMoveVelocity(xDirection * _playerSpaceshipData.MovementSpeed);
+            _playerSpaceshipViewModule.TrySetMovementVelocity(xDirection * _playerSpaceshipData.MovementSpeed);
         }
 
         public void ResetSpaceShip()
         {
-            _playerSpaceshipViewModule.ResetSpaceShip();
+            _playerSpaceshipViewModule.ResetSpaceShipTransform();
         }
     }
 }

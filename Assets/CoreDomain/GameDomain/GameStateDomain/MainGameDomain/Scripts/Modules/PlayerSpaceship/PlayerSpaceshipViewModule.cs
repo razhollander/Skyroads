@@ -16,6 +16,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         private float _spaceshipDestRotation = 0;
         private float _spaceshipMaxRotationAngle = 20;
         private readonly IUpdateSubscriptionService _updateSubscriptionService;
+        private float _positiveXMovementBound;
 
         public Transform PlayerSpaceShipTransform => _playerSpaceshipView.transform;
 
@@ -29,8 +30,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         public void Setup(PlayerSpaceshipView playerSpaceshipView)
         {
             _playerSpaceshipView = playerSpaceshipView;
-
-            //var startPosition = _screenBoundsInWorldSpace * RelativeToScreenCenterStartPosition + _deviceScreenService.ScreenCenterPointInWorldSpace;
             _playerSpaceshipView.transform.position = new Vector3(0, 2.5f, 0);
         }
         
@@ -60,7 +59,18 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
             GameObject.Destroy(_playerSpaceshipView.gameObject);
         }
 
-        public void SetMoveVelocity(float xVelocity)
+        public void TrySetMovementVelocity(float xVelocity)
+        {
+            var spaceShipPosition = _playerSpaceshipView.transform.position;
+            var willMoveOutOfBounds = spaceShipPosition.x > _positiveXMovementBound && xVelocity > 0 ||
+                                      spaceShipPosition.x < -_positiveXMovementBound && xVelocity < 0;
+            
+            if (willMoveOutOfBounds) return;
+            
+            SetMovementVelocity(xVelocity);
+        }
+
+        private void SetMovementVelocity(float xVelocity)
         {
             _playerSpaceshipView.SetVelocity(xVelocity);
             var xDirection = xVelocity > 0 ? 1 : xVelocity.EqualsWithTolerance(0) ? 0 : -1;
@@ -71,12 +81,30 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         public void ManagedUpdate()
         {
             _playerSpaceshipView.LerpToRotation(_spaceshipDestRotation);
+            ResetVelocityIfOutOfBounds();
         }
 
-        public void ResetSpaceShip()
+        private void ResetVelocityIfOutOfBounds()
+        {
+            var spaceShipPosition = _playerSpaceshipView.transform.position;
+            var isSpaceShipOutOfXBounds =  spaceShipPosition.x > _positiveXMovementBound ||
+                                        spaceShipPosition.x < -_positiveXMovementBound;
+            
+            if (isSpaceShipOutOfXBounds)
+            {
+                SetMovementVelocity(0);
+            }
+        }
+
+        public void ResetSpaceShipTransform()
         {
             _playerSpaceshipView.transform.position = new Vector3(0, 2.5f, 0);
             _playerSpaceshipView.SetRotation(0);
+        }
+
+        public void SetXMovementBounds(float positiveXBound)
+        {
+            _positiveXMovementBound = positiveXBound;
         }
     }
 }

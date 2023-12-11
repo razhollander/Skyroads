@@ -45,7 +45,7 @@ public class PlayerHitCommand : Command<PlayerHitCommand>
         _asteroidsModule.StopSpawning();
         _floorModule.StopMovement();
         _scoreModule.StopCountingScore();
-        _playerSpaceshipModule.EnableSpaceShipMovement(true);
+        _playerSpaceshipModule.EnableSpaceShipMovement(false);
         _timePlayingModule.StopTimer();
 
         bool isNewHighScore = _highScoreModule.LastHighScore < _scoreModule.PlayerScore;
