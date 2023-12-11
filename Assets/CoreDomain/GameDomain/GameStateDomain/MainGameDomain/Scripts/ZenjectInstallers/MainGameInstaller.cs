@@ -26,6 +26,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             Container.BindInterfacesTo<ScoreModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<AsteroidsModule>().AsSingle().NonLazy();
             Container.BindInterfacesTo<TimePlayingModule>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<HighScoreModule>().AsSingle().NonLazy();
             
             Container.BindFactory<float, JoystickDraggedCommand, JoystickDraggedCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<GameBoostModeChangedCommandData, GameBoostModeChangedCommand, GameBoostModeChangedCommand.Factory>().AsSingle().NonLazy();

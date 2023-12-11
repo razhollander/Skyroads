@@ -30,5 +30,10 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         {
             _mainGameUiView.UpdateAsteroidsPassedCountable(asteroidsPassed);
         }
+
+        public void UpdateHighScore(int lastHighScore)
+        {
+            _mainGameUiView.UpdateHighScore(lastHighScore);
+        }
     }
 }

@@ -20,6 +20,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/Asteroid/AsteroidsViewModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/Asteroid/ScriptalbeObjects/AsteroidData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/Floor/FloorCreator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/Highscore/HighScoreModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/LevelKeyboardInputs/GameKeyboardInputsModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/TimePlaying/TimePlayingModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Services/GameSpeed/GameSpeedService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -109,7 +110,7 @@
       <workItem from="1702042609832" duration="5538000" />
       <workItem from="1702110276539" duration="934000" />
       <workItem from="1702111554212" duration="11260000" />
-      <workItem from="1702129418725" duration="19701000" />
+      <workItem from="1702129418725" duration="21150000" />
     </task>
     <servers />
   </component>

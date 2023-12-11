@@ -7,5 +7,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         void Dispose();
         void UpdateTimePlaying(int timePlaying);
         void UpdateAsteroidsPassedCountable(int asteroidsPassed);
+        void UpdateHighScore(int highScore);
     }
 }

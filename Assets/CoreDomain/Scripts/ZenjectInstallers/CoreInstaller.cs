@@ -1,5 +1,7 @@
+using CoreDomain.Scripts.Services.DataPersistence;
 using CoreDomain.Services;
 using CoreDomain.Services.GameStates;
+using Handlers.Serializers.Serializer;
 using Services.Logs;
 using UnityEngine;
 using Zenject;
@@ -21,6 +23,8 @@ namespace CoreDomain
             Container.BindInterfacesTo<StateMachineService>().AsSingle().NonLazy();
             Container.BindInterfacesTo<UpdateSubscriptionService>().FromInstance(_updateSubscriptionService).AsSingle().NonLazy();
             Container.BindInterfacesTo<AudioService>().FromInstance(_audioService).AsSingle().NonLazy();
+            Container.BindInterfacesTo<SerializerService>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<PlayerPrefsDataPersistence>().AsSingle().NonLazy();
 
             Container.Bind<GameInputActions>().AsSingle().NonLazy();
         }
