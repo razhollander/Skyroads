@@ -66,6 +66,14 @@
     </hideBySeverity>
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../../temp/SkyroadsBuild/1\Galaga.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Raz\Documents\PF\Raz\temp\SkyroadsBuild\1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\2021.3.17f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads -debugCodeOptimization" />
@@ -116,7 +124,7 @@
       <workItem from="1702042609832" duration="5538000" />
       <workItem from="1702110276539" duration="934000" />
       <workItem from="1702111554212" duration="11260000" />
-      <workItem from="1702129418725" duration="40054000" />
+      <workItem from="1702129418725" duration="41040000" />
     </task>
     <servers />
   </component>
