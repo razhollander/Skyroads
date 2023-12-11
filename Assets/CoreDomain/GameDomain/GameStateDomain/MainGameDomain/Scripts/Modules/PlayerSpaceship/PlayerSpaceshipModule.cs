@@ -13,11 +13,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         private readonly PlayerSpaceshipViewModule _playerSpaceshipViewModule;
         private PlayerSpaceshipData _playerSpaceshipData;
 
-        public PlayerSpaceshipModule(IAssetBundleLoaderService assetBundleLoaderService, IDeviceScreenService deviceScreenService, IUpdateSubscriptionService updateSubscriptionService, PlayerHitCommand.Factory playerHitCommand)
+        public PlayerSpaceshipModule(IAssetBundleLoaderService assetBundleLoaderService, IUpdateSubscriptionService updateSubscriptionService, PlayerHitCommand.Factory playerHitCommand)
         {
             _playerHitCommand = playerHitCommand;
             _playerSpaceshipCreator = new PlayerSpaceshipCreator(assetBundleLoaderService);
-            _playerSpaceshipViewModule = new PlayerSpaceshipViewModule(deviceScreenService, updateSubscriptionService);
+            _playerSpaceshipViewModule = new PlayerSpaceshipViewModule(updateSubscriptionService);
         }
 
         public void CreatePlayerSpaceship()
@@ -39,6 +39,13 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
                 _playerSpaceshipViewModule.TrySetMovementVelocity(0);
                 _playerSpaceshipViewModule.UnregisterListeners();
             }
+
+            _playerSpaceshipViewModule.EnableThruster(isEnabled);
+        }
+
+        public void EnableThrusterBoost(bool isEnabled)
+        {
+            _playerSpaceshipViewModule.EnableThrusterBoost(isEnabled);
         }
 
         public void SetXMovementBounds(float positiveXBound)
@@ -67,6 +74,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 
         public void ResetSpaceShip()
         {
+            _playerSpaceshipViewModule.EnableThrusterBoost(false);
             _playerSpaceshipViewModule.ResetSpaceShipTransform();
         }
     }

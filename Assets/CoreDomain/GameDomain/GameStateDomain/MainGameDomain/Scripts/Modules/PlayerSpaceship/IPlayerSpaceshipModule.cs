@@ -11,5 +11,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         void ResetSpaceShip();
         void EnableSpaceShipMovement(bool isEnabled);
         void SetXMovementBounds(float positiveXBound);
+        void EnableThrusterBoost(bool isEnabled);
     }
 }

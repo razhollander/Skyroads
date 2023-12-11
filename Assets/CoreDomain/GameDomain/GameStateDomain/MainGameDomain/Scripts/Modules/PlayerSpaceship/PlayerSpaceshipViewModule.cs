@@ -7,11 +7,9 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 {
     public class PlayerSpaceshipViewModule: IUpdatable
     {
-        private static readonly Vector2 RelativeToScreenCenterStartPosition = new (0f, -0.5f);
+        private const float SpaceShipYPosition = 3.8f;
         
-        private readonly IDeviceScreenService _deviceScreenService;
         private PlayerSpaceshipView _playerSpaceshipView;
-        private readonly Vector3 _screenBoundsInWorldSpace;
         private float _playerSpaceFromBounds;
         private float _spaceshipDestRotation = 0;
         private float _spaceshipMaxRotationAngle = 20;
@@ -20,17 +18,15 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 
         public Transform PlayerSpaceShipTransform => _playerSpaceshipView.transform;
 
-        public PlayerSpaceshipViewModule(IDeviceScreenService deviceScreenService, IUpdateSubscriptionService updateSubscriptionService)
+        public PlayerSpaceshipViewModule(IUpdateSubscriptionService updateSubscriptionService)
         {
-            _deviceScreenService = deviceScreenService;
-            _screenBoundsInWorldSpace = deviceScreenService.ScreenBoundsInWorldSpace;
             _updateSubscriptionService = updateSubscriptionService;
         }
         
         public void Setup(PlayerSpaceshipView playerSpaceshipView)
         {
             _playerSpaceshipView = playerSpaceshipView;
-            _playerSpaceshipView.transform.position = new Vector3(0, 2.5f, 0);
+            _playerSpaceshipView.transform.position = new Vector3(0, SpaceShipYPosition, 0);
         }
         
         public void Dispose()
@@ -78,6 +74,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
             _spaceshipDestRotation = _spaceshipMaxRotationAngle * rotationFactor;
         }
 
+        public void EnableThrusterBoost(bool isEnabled)
+        {
+            _playerSpaceshipView.EnableThrusterBoost(isEnabled);
+        }
+        
         public void ManagedUpdate()
         {
             _playerSpaceshipView.LerpToRotation(_spaceshipDestRotation);
@@ -105,6 +106,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         public void SetXMovementBounds(float positiveXBound)
         {
             _positiveXMovementBound = positiveXBound;
+        }
+
+        public void EnableThruster(bool isEnabled)
+        {
+            _playerSpaceshipView.EnableThruster(isEnabled);
         }
     }
 }

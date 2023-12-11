@@ -8,6 +8,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2e237979794b4aadbddd3a05c3c47a8224800/58/58817746/ParticleSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/70fff961be83415897c7a30a7cd55d2a136218/13/52cd552f/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Commands/AsteroidPassedPlayer/AsteroidPassedPlayerCommandData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Commands/BeginGameCommand.cs" root0="FORCE_HIGHLIGHTING" />
@@ -26,6 +27,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/Highscore/HighScoreModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/LevelKeyboardInputs/GameKeyboardInputsModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/MainGameUi/GameOverUiView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/PlayerSpaceship/ThrusterView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/TimePlaying/TimePlayingModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Services/GameSpeed/GameSpeedService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -114,7 +116,7 @@
       <workItem from="1702042609832" duration="5538000" />
       <workItem from="1702110276539" duration="934000" />
       <workItem from="1702111554212" duration="11260000" />
-      <workItem from="1702129418725" duration="35125000" />
+      <workItem from="1702129418725" duration="40054000" />
     </task>
     <servers />
   </component>
@@ -142,16 +144,29 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/PlayerSpaceship/PlayerSpaceshipViewModule.cs</url>
-          <line>63</line>
+          <line>59</line>
           <properties documentPath="C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads\Assets\CoreDomain\GameDomain\GameStateDomain\MainGameDomain\Scripts\Modules\PlayerSpaceship\PlayerSpaceshipViewModule.cs" initialLine="63" containingFunctionPresentation="method 'TrySetMovementVelocity'">
             <startOffsets>
-              <option value="2356" />
+              <option value="2018" />
             </startOffsets>
             <endOffsets>
-              <option value="2420" />
+              <option value="2082" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/PlayerSpaceship/PlayerSpaceshipView.cs</url>
+          <line>41</line>
+          <properties documentPath="C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads\Assets\CoreDomain\GameDomain\GameStateDomain\MainGameDomain\Scripts\Modules\PlayerSpaceship\PlayerSpaceshipView.cs" initialLine="41" containingFunctionPresentation="method 'LerpToRotation'">
+            <startOffsets>
+              <option value="1376" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1377" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

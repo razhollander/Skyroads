@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1492731342
+CRC: 1389048740
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bf8a27920cdc0611731e1ec625184c06
+    Hash: 2008f886003c077f422ccd17d263cad6
   TypeTreeHash:
     serializedVersion: 2
-    Hash: ec2f81187287e6d9a195bc9f73dc973e
+    Hash: 9a27ef3308e00a572d177d793a293b0e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -33,14 +33,30 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: d4e9a230541dd4e73a9074d9d9de33f0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: aed3308147ad64b488d7766b2efd1f17, type: 3}
 - Class: 115
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: ThrusterView/ThrusterBoostSettings
 Assets:
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/ThrusterFX/Thruster
+  - Glow.png
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/ThrusterFX/Thruster
+  - Exhaust.psd
 - Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/Spaceship_NS.tga
 - Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/SpaceshipMaterial.mat
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/ThrusterFX/Thruster
+  - Maneuver.tga
 - Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/Spaceship
   - FBX.fbx
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/ThrusterFX/ThrusterTrailMaterial.mat
 - Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/Spaceship_DG.tga
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/ThrusterFX/Thruster.prefab
 - Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/PlayerSpaceship/PlayerSpaceship.prefab
 Dependencies: []

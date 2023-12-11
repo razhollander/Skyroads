@@ -9,6 +9,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         [SerializeField] private Transform _rendererTransform;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _rotationLerpFactor = 5f;
+        [SerializeField] private ThrusterView[] _thrusters;
+        
         private float _currentZRotation = 0;
         private Action<Collider> _onCollisionEnter;
 
@@ -37,6 +39,22 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
             var newZRotation = Mathf.Lerp(_currentZRotation, rotationInDegrees, _rotationLerpFactor * Time.deltaTime);
             _currentZRotation = newZRotation;
             RotateOnZAxis(newZRotation);
+        }
+
+        public void EnableThruster(bool isEnabled)
+        {
+            foreach (var thrusterView in _thrusters)
+            {
+                thrusterView.EnabledParticles(isEnabled);
+            }
+        }
+        
+        public void EnableThrusterBoost(bool isEnabled)
+        {
+            foreach (var thrusterView in _thrusters)
+            {
+                thrusterView.EnableBoost(isEnabled);
+            }
         }
         
         public void SetRotation(float rotationInDegrees)
