@@ -66,6 +66,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _cameraService.SetCameraZoom(GameCameraType.World, true);
             _floorModule.StartMovement();
             _asteroidsModule.StartSpawning();
+            _asteroidsModule.SetAsteroidsPassedZPosition(_playerSpaceshipModule.PlayerSpaceShipTransform.position.z);
             _scoreModule.LoadScoreConfig();
             _scoreModule.StartCountingScore();
             _timePlayingModule.StartTimer();

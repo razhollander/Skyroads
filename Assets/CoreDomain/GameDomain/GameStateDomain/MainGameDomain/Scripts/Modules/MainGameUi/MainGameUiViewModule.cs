@@ -24,6 +24,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         public void UpdateTimePlaying(int timePlaying)
         {
             _mainGameUiView.UpdateTimePlaying(timePlaying);
+        }  
+        
+        public void UpdateAsteroidsPassedCountable(int asteroidsPassed)
+        {
+            _mainGameUiView.UpdateAsteroidsPassedCountable(asteroidsPassed);
         }
     }
 }

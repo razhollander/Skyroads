@@ -9,7 +9,9 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
     public class MainGameUiView : MonoBehaviour
     {
         [SerializeField] private Countable _scoreCountable;
-        [SerializeField] private Countable _timePlayingText;
+        [SerializeField] private Countable _highScoreCountable;
+        [SerializeField] private Countable _timePlayingCountable;
+        [SerializeField] private Countable _asteroidsPassedCountable;
 
         public void Setup(Action shootButtonClicked, Action<float> onJoystickDragged, Action onBackButtonClicked)
         {
@@ -45,7 +47,12 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         
         public void UpdateTimePlaying(int timePlaying)
         {
-            _timePlayingText.SetNumber(timePlaying);
+            _timePlayingCountable.SetNumber(timePlaying);
+        }  
+        
+        public void UpdateAsteroidsPassedCountable(int asteroidsPassed)
+        {
+            _asteroidsPassedCountable.SetNumber(asteroidsPassed);
         }
     }
 }

@@ -8,25 +8,36 @@ using Random = UnityEngine.Random;
 
 public class AsteroidsModule: IUpdatable, IAsteroidsModule
 {
+    public int AsteroidScoreGainedWhenPassedPlayer => _asteroidData.ScoreGainedWhenPassedPlayer;
+    public int AsteroidsPassedPlayerCounter { get; private set; }
+
     private readonly SpawnAsteroidCommand.Factory _spawnAsteroidCommand;
     private readonly IUpdateSubscriptionService _updateSubscriptionService;
     private AsteroidsCreator _asteroidsCreator;
     private AsteroidsSpawnRateData _asteroidsSpawnRateData;
+    private AsteroidData _asteroidData;
     private float _secondsUntilNextSpawn;
     private float _secondsPassedSinceStartedSpawning = 0;
     private AsteroidsViewModule _asteroidsViewModule;
-    
-    public AsteroidsModule(AsteroidsPool.Factory asteroidsPool, IAssetBundleLoaderService assetBundleLoaderService, SpawnAsteroidCommand.Factory spawnAsteroidCommand, IUpdateSubscriptionService updateSubscriptionService, IGameSpeedService gameSpeedService)
+
+    public AsteroidsModule(
+        AsteroidsPool.Factory asteroidsPool,
+        IAssetBundleLoaderService assetBundleLoaderService,
+        SpawnAsteroidCommand.Factory spawnAsteroidCommand,
+        IUpdateSubscriptionService updateSubscriptionService,
+        IGameSpeedService gameSpeedService,
+        AsteroidPassedPlayerCommand.Factory asteroidPassedPlayerCommand)
     {
         _spawnAsteroidCommand = spawnAsteroidCommand;
         _updateSubscriptionService = updateSubscriptionService;
         _asteroidsCreator = new AsteroidsCreator(asteroidsPool, assetBundleLoaderService);
-        _asteroidsViewModule = new AsteroidsViewModule(gameSpeedService, updateSubscriptionService);
+        _asteroidsViewModule = new AsteroidsViewModule(gameSpeedService, updateSubscriptionService, asteroidPassedPlayerCommand);
     }
 
     public void LoadData()
     {
         _asteroidsSpawnRateData = _asteroidsCreator.LoadAsteroidsSpawnRateData();
+        _asteroidData = _asteroidsCreator.LoadAsteroidData();
         _secondsUntilNextSpawn = 0;
     }
 
@@ -85,5 +96,21 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
         asteroid.gameObject.SetActive(true);
         
         _asteroidsViewModule.AddAsteroid(asteroid);
+    }
+
+    public void SetAsteroidPassedPlayer(string asteroidId)
+    {
+        _asteroidsViewModule.SetAsteroidPassedPlayer(asteroidId);
+        AsteroidsPassedPlayerCounter++;
+    }
+    
+    public void DespawnAsteroid(AsteroidView asteroid)
+    {
+        _asteroidsViewModule.RemoveAsteroid(asteroid);
+    }
+    
+    public void SetAsteroidsPassedZPosition(float zPosition)
+    {
+        _asteroidsViewModule.SetAsteroidsPassedZPosition(zPosition);
     }
 }

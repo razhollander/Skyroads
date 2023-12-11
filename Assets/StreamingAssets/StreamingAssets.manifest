@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1721700051
+CRC: 401286453
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -37,4 +37,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_11:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/gamescore
+      Dependencies: {}
+    Info_12:
+      Name: coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/asteroid
       Dependencies: {}

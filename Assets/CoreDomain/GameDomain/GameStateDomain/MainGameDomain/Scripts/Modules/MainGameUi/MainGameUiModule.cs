@@ -35,5 +35,10 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         {
             _viewModule.UpdateTimePlaying(timePlaying);
         }
+        
+        public void UpdateAsteroidsPassedCountable(int asteroidsPassed)
+        {
+            _viewModule.UpdateAsteroidsPassedCountable(asteroidsPassed);
+        }
     }
 }
