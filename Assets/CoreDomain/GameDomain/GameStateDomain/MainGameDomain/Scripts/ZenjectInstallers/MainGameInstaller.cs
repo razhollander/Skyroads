@@ -44,8 +44,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             Container.BindFactory<float, ArrowKeysInputChangedCommand, ArrowKeysInputChangedCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<ScoreChangedCommandData, ScoreChangedCommand, ScoreChangedCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<int, TimePlayingChangedCommand, TimePlayingChangedCommand.Factory>().AsSingle().NonLazy();
+            Container.BindFactory<BeginGameCommand, BeginGameCommand.Factory>().AsSingle().NonLazy();
             Container.BindFactory<AsteroidPassedPlayerCommandData, AsteroidPassedPlayerCommand, AsteroidPassedPlayerCommand.Factory>().AsSingle().NonLazy();
-
         }
     }
 }

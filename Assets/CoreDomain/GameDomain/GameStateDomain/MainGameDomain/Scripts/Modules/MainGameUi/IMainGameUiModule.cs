@@ -8,5 +8,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         void UpdateTimePlaying(int timePlaying);
         void UpdateAsteroidsPassedCountable(int asteroidsPassed);
         void UpdateHighScore(int highScore);
+        void SwitchToInGameView();
+        void SwitchToBeforeGameView();
     }
 }

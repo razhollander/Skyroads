@@ -8,5 +8,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         void CreatePlayerSpaceship();
         void Dispose();
         public void SetSpaceShipMoveDirection(float xDirection);
+        void ResetSpaceShip();
     }
 }

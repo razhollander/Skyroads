@@ -33,5 +33,10 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         {
             _playerSpaceshipViewModule.SetMoveVelocity(xDirection * _playerSpaceshipData.MovementSpeed);
         }
+
+        public void ResetSpaceShip()
+        {
+            _playerSpaceshipViewModule.ResetSpaceShip();
+        }
     }
 }

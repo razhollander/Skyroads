@@ -20,11 +20,17 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
             _rigidbody.velocity = new Vector2(xVelocity, 0);
         }
 
-        public void LerpToRotation(float rotation)
+        public void LerpToRotation(float rotationInDegrees)
         {
-            var newZRotation = Mathf.Lerp(_currentZRotation, rotation, _rotationLerpFactor * Time.deltaTime);
+            var newZRotation = Mathf.Lerp(_currentZRotation, rotationInDegrees, _rotationLerpFactor * Time.deltaTime);
             _currentZRotation = newZRotation;
             RotateOnZAxis(newZRotation);
+        }
+        
+        public void SetRotation(float rotationInDegrees)
+        {
+            _currentZRotation = rotationInDegrees;
+            RotateOnZAxis(_currentZRotation);
         }
     }
 }

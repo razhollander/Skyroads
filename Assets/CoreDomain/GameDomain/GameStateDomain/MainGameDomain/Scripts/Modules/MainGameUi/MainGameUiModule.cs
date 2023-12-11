@@ -45,5 +45,15 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         {
             _viewModule.UpdateHighScore(highScore);
         }
+        
+        public void SwitchToInGameView()
+        {
+            _viewModule.SwitchToInGameView();
+        }
+        
+        public void SwitchToBeforeGameView()
+        {
+            _viewModule.SwitchToBeforeGameView();
+        }
     }
 }

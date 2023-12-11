@@ -73,5 +73,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         {
             _playerSpaceshipView.LerpToRotation(_spaceshipDestRotation);
         }
+
+        public void ResetSpaceShip()
+        {
+            _playerSpaceshipView.transform.position = new Vector3(0, 2.5f, 0);
+            _playerSpaceshipView.SetRotation(0);
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         [SerializeField] private Countable _highScoreCountable;
         [SerializeField] private Countable _timePlayingCountable;
         [SerializeField] private Countable _asteroidsPassedCountable;
+        [SerializeField] private GameObject _inGamePanel;
+        [SerializeField] private GameObject _beforeGamePanel;
 
         public void Setup(Action shootButtonClicked, Action<float> onJoystickDragged, Action onBackButtonClicked)
         {
@@ -38,7 +40,17 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
             
         }
 
-    
+        public void SwitchToInGameView()
+        {
+            _inGamePanel.SetActive(true);
+            _beforeGamePanel.SetActive(false);
+        }
+        
+        public void SwitchToBeforeGameView()
+        {
+            _inGamePanel.SetActive(false);
+            _beforeGamePanel.SetActive(true);
+        }
 
         private void RemoveListeners()
         {

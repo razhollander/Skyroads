@@ -6,6 +6,8 @@ using CoreDomain.Scripts.Utils.Command;
 using CoreDomain.Services;
 using CoreDomain.Services.GameStates;
 using Cysharp.Threading.Tasks;
+using UniRx;
+using UnityEngine;
 
 namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
 {
@@ -24,6 +26,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
         private readonly IScoreModule _scoreModule;
         private readonly ITimePlayingModule _timePlayingModule;
         private readonly IHighScoreModule _highScoreModule;
+        private readonly BeginGameCommand.Factory _beginGameCommand;
 
         public EnterMainGameStateCommand(
             MainGameStateEnterData stateEnterData,
@@ -38,7 +41,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             IAsteroidsModule asteroidsModule,
             IScoreModule scoreModule,
             ITimePlayingModule timePlayingModule,
-            IHighScoreModule highScoreModule)
+            IHighScoreModule highScoreModule,
+            BeginGameCommand.Factory beginGameCommand)
         {
             _stateEnterData = stateEnterData;
             _mainGameUiModule = mainGameUiModule;
@@ -50,6 +54,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _scoreModule = scoreModule;
             _timePlayingModule = timePlayingModule;
             _highScoreModule = highScoreModule;
+            _beginGameCommand = beginGameCommand;
             _levelsService = levelsService;
             _enemiesModule = enemiesModule;
             _audioService = audioService;
@@ -57,27 +62,31 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
 
         public override async UniTask Execute()
         {
-            //var enterData = _stateEnterData;
-            //_mainGameUiModule.CreateMainGameUi();
-            _mainGameUiModule.CreateMainGameUi();
             _gameSpeedService.LoadGameSpeedData();
             _asteroidsModule.LoadData();
+            _scoreModule.LoadScoreConfig();
 
+            _mainGameUiModule.CreateMainGameUi();
             _playerSpaceshipModule.CreatePlayerSpaceship();
             _floorModule.CreateFloor();
+            
             _cameraService.SetCameraFollowTarget(GameCameraType.World, _playerSpaceshipModule.PlayerSpaceShipTransform);
             _cameraService.SetCameraZoom(GameCameraType.World, true);
-            _floorModule.StartMovement();
-            _asteroidsModule.StartSpawning();
             _asteroidsModule.SetAsteroidsPassedZPosition(_playerSpaceshipModule.PlayerSpaceShipTransform.position.z);
-            _scoreModule.LoadScoreConfig();
-            _scoreModule.StartCountingScore();
-            _timePlayingModule.StartTimer();
-            _highScoreModule.LoadLastHighScore();
-            _mainGameUiModule.UpdateHighScore(_highScoreModule.LastHighScore);
-            //var levelData = _levelsService.GetLevelData(enterData.Level);
-            //_enemiesModule.StartEnemiesWavesSequence(levelData.EnemiesWaveSequenceData);
+            _mainGameUiModule.SwitchToBeforeGameView();
             _audioService.PlayAudio(AudioClipName.ThemeSongName, AudioChannelType.Master, AudioPlayType.Loop);
+
+            var anyKeyDownObservable = Observable.EveryUpdate()
+
+                // Filter for key down events
+                .Where(_ => Input.anyKeyDown)
+
+                // Take the first event
+                .First();
+
+            await anyKeyDownObservable.ToTask();
+            Debug.Log("YAY");
+            _beginGameCommand.Create().Execute();
         }
     }
 }
