@@ -14,10 +14,34 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         [SerializeField] private Countable _asteroidsPassedCountable;
         [SerializeField] private GameObject _inGamePanel;
         [SerializeField] private GameObject _beforeGamePanel;
+        [SerializeField] private GameOverUiView _gameOverView;
+        
+        private Action _onPlayAgainClicked;
 
-        public void Setup(Action shootButtonClicked, Action<float> onJoystickDragged, Action onBackButtonClicked)
+        public void Setup(Action onPlayAgainClicked)
         {
-            
+            _onPlayAgainClicked = onPlayAgainClicked;
+        }
+
+        public void ShowGameOverPanel(int score,
+            int timePlayed,
+            int asteroidsPassed,
+            bool isNewHighScore,
+            int highScore)
+        {
+            _gameOverView.SetAllTexts(score, timePlayed, asteroidsPassed, isNewHighScore, highScore);
+            _gameOverView.gameObject.SetActive(true);
+        }
+        
+        public void HideGameOverPanel()
+        {
+            _gameOverView.gameObject.SetActive(false);
+        }
+        
+        // called from button clicked
+        public void OnPlayAgainClicked()
+        {
+            _onPlayAgainClicked?.Invoke();
         }
 
         public void UpdateScore(int newScore)
@@ -25,21 +49,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
             _scoreCountable.SetNumber(newScore);
         }
         
-        private void Awake()
-        {
-            AddListeners();
-        }
-
-        private void OnDestroy()
-        {
-            RemoveListeners();
-        }
-
-        private void AddListeners()
-        {
-            
-        }
-
         public void SwitchToInGameView()
         {
             _inGamePanel.SetActive(true);
@@ -52,11 +61,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
             _beforeGamePanel.SetActive(true);
         }
 
-        private void RemoveListeners()
-        {
-            
-        }
-        
         public void UpdateTimePlaying(int timePlaying)
         {
             _timePlayingCountable.SetNumber(timePlaying);
@@ -67,9 +71,17 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
             _asteroidsPassedCountable.SetNumber(asteroidsPassed);
         }
 
-        public void UpdateHighScore(int highScore)
+        public void UpdateHighScore(int highScore, bool isImmediate)
         {
-            _highScoreCountable.SetNumber(highScore);
+            _highScoreCountable.SetNumber(highScore, isImmediate);
+        }
+
+        public void SetStartingValues(int highScore, int score, int timePlaying, int asteroidPassed)
+        {
+            _highScoreCountable.SetStartingValue(highScore);
+            _asteroidsPassedCountable.SetStartingValue(asteroidPassed);
+            _timePlayingCountable.SetStartingValue(timePlaying);
+            _scoreCountable.SetStartingValue(score);
         }
     }
 }

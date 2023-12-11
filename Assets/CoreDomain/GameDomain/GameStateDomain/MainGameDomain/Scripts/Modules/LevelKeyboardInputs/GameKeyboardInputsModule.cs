@@ -23,18 +23,20 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.GameKeybo
             _arrowKeysInputChangedCommandFactory = arrowKeysInputChangedCommandFactory;
             _spaceButtonClickedCommandFactory = spaceButtonClickedCommandFactory;
             _spaceButtonReleasedCommandFactory = spaceButtonReleasedCommandFactory;
-
-            AddListeners();
         }
 
-        public void RemoveInputsListeners()
+        public void EnableInputs()
         {
-            RemoveListeners();
+            _gameInputActions.MainGame.Boost.started += OnSpaceBarClicked;
+            _gameInputActions.MainGame.Boost.canceled += OnSpaceBarReleased;
+            _updateSubscriptionService.RegisterUpdatable(this);
         }
-
-        public void Dispose()
+        
+        public void DisableInputs()
         {
-            RemoveListeners();
+            _gameInputActions.MainGame.Boost.started -= OnSpaceBarClicked;
+            _gameInputActions.MainGame.Boost.canceled -= OnSpaceBarReleased;
+            _updateSubscriptionService.UnregisterUpdatable(this);
         }
 
         public void ManagedUpdate()
@@ -53,23 +55,9 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.GameKeybo
             }
         }
 
-        private void AddListeners()
-        {
-            _gameInputActions.MainGame.Boost.started += OnSpaceBarClicked;
-            _gameInputActions.MainGame.Boost.canceled += OnSpaceBarReleased;
-            _updateSubscriptionService.RegisterUpdatable(this);
-        }
-
         private void OnSpaceBarReleased(InputAction.CallbackContext obj)
         {
             _spaceButtonReleasedCommandFactory.Create().Execute();
-        }
-
-        private void RemoveListeners()
-        {
-            _gameInputActions.MainGame.Boost.started -= OnSpaceBarClicked;
-            _gameInputActions.MainGame.Boost.canceled -= OnSpaceBarReleased;
-            _updateSubscriptionService.UnregisterUpdatable(this);
         }
 
         private void OnSpaceBarClicked(InputAction.CallbackContext context)

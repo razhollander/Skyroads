@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464b117c12e74846b730dd4b80768192, type: 3}
   m_Name: AsteroidsSpawnRateData
   m_EditorClassIdentifier: 
-  InitialSpawnRateInSeconds: 5
-  FinalSpawnRateInSeconds: 3
-  ReachFinalSpawnRateAfterSeconds: 30
+  InitialSpawnRateInSeconds: 1.5
+  FinalSpawnRateInSeconds: 0.5
+  ReachFinalSpawnRateAfterSeconds: 10

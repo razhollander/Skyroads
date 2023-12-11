@@ -31,9 +31,9 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
             _mainGameUiView.UpdateAsteroidsPassedCountable(asteroidsPassed);
         }
 
-        public void UpdateHighScore(int lastHighScore)
+        public void UpdateHighScore(int lastHighScore, bool isImmediate)
         {
-            _mainGameUiView.UpdateHighScore(lastHighScore);
+            _mainGameUiView.UpdateHighScore(lastHighScore, isImmediate);
         }
         
         public void SwitchToInGameView()
@@ -44,6 +44,25 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         public void SwitchToBeforeGameView()
         {
             _mainGameUiView.SwitchToBeforeGameView();
+        }
+
+        public void SetStartingValues(int highScore, int score, int timePlaying, int asteroidPassed)
+        {
+            _mainGameUiView.SetStartingValues(highScore, score, timePlaying, asteroidPassed);
+        }
+        
+        public void ShowGameOverPanel(int score,
+            int timePlayed,
+            int asteroidsPassed,
+            bool isNewHighScore,
+            int highScore)
+        {
+            _mainGameUiView.ShowGameOverPanel(score, timePlayed, asteroidsPassed, isNewHighScore, highScore);
+        }
+        
+        public void HideGameOverPanel()
+        {
+            _mainGameUiView.HideGameOverPanel();
         }
     }
 }

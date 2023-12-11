@@ -18,21 +18,24 @@ namespace CoreDomain.Scripts.Utils.Command
         int _viewTotalNumber = 0;
         string _zeroDigits = "";
 
-        protected virtual void OnEnable()
-        {
-            SetStartingValue();
-        }
-
-        protected virtual void SetStartingValue(int value = 0)
+        public void SetStartingValue(int value = 0)
         {
             _viewTotalNumber = value;
             _savedTotalNumber = value;
             SetText();
         }
 
-        public void SetNumber(int newNumber)
+        public void SetNumber(int newNumber, bool isImmediate = false)
         {
-            AddNumberEffect(newNumber - _savedTotalNumber).Forget();
+            if (isImmediate)
+            {
+                UpdateText(newNumber - _savedTotalNumber);
+            }
+            else
+            {
+                AddNumberEffect(newNumber - _savedTotalNumber).Forget();
+            }
+
             _savedTotalNumber = newNumber;
         }
 
@@ -41,7 +44,7 @@ namespace CoreDomain.Scripts.Utils.Command
             _viewTotalNumber += addedNumber;
             SetText();
         }
-
+        
         private async UniTask AddNumberEffect(int number)
         {
             var numberLeftToAdd = number;
@@ -83,7 +86,7 @@ namespace CoreDomain.Scripts.Utils.Command
 
                 _zeroDigits = sb.ToString();
             }
-
+          
             _text.text = PrefixText + _zeroDigits + stringTotalNumber;
         }
     }

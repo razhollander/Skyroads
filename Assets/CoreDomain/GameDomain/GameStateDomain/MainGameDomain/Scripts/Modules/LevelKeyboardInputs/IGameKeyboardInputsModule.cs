@@ -2,7 +2,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.GameKeybo
 {
     public interface IGameKeyboardInputsModule
     {
-        void RemoveInputsListeners();
-        void Dispose();
+        void EnableInputs();
+        void DisableInputs();
     }
 }

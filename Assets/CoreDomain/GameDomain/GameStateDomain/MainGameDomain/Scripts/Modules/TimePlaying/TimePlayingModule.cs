@@ -9,15 +9,16 @@ using UnityEngine;
 
 public class TimePlayingModule : ITimePlayingModule, IUpdatable
 {
-    private int TimePlaying => Mathf.FloorToInt(_timePlaying);
+    public int TimePlaying => _timePlayingInt;
 
     private readonly TimePlayingChangedCommand.Factory _timePlayingChangedCommand;
     private readonly IUpdateSubscriptionService _updateSubscriptionService;
-    private float _timePlaying;
-    private int _prevTimePlaying;
+    private float _timePlayingFloat;
+    private int _prevTimePlayingInt;
     private IDisposable _timerCoroutine;
     private CancellationToken _timerToken;
     private CancellationTokenSource _cancellationToken;
+    private int _timePlayingInt;
 
     public TimePlayingModule(TimePlayingChangedCommand.Factory timePlayingChangedCommand, IUpdateSubscriptionService updateSubscriptionService)
     {
@@ -26,9 +27,14 @@ public class TimePlayingModule : ITimePlayingModule, IUpdatable
     }
     public void StartTimer()
     {
-        _timePlaying = 0;
-        _prevTimePlaying = 0;
         _updateSubscriptionService.RegisterUpdatable(this);
+    }
+
+    public void ResetTimer()
+    {
+        _timePlayingFloat = 0;
+        _timePlayingInt = 0;
+        _prevTimePlayingInt = 0;
     }
 
     public void StopTimer()
@@ -38,13 +44,13 @@ public class TimePlayingModule : ITimePlayingModule, IUpdatable
 
     public void ManagedUpdate()
     {
-        _timePlaying += Time.deltaTime;
-        var currentTimePlaying = Mathf.FloorToInt(_timePlaying);
+        _timePlayingFloat += Time.deltaTime;
+        _timePlayingInt = Mathf.FloorToInt(_timePlayingFloat);
         
-        if (currentTimePlaying != _prevTimePlaying)
+        if (_timePlayingInt != _prevTimePlayingInt)
         {
-            _prevTimePlaying = currentTimePlaying;
-            _timePlayingChangedCommand.Create(currentTimePlaying).Execute();
+            _prevTimePlayingInt = _timePlayingInt;
+            _timePlayingChangedCommand.Create(_timePlayingInt).Execute();
         }
     }
 }

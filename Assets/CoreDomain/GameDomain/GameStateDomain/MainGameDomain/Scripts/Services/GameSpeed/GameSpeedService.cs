@@ -9,6 +9,7 @@ public class GameSpeedService : IGameSpeedService
 
     public bool IsBoosting { get; private set; }
     public float CurrentGameSpeed => IsBoosting ? _gameSpeedConfigData.BoostSpeedMultiplier * _currentGameBaseSpeed : _currentGameBaseSpeed;
+    public float BoostSpeedMultiplier => _gameSpeedConfigData.BoostSpeedMultiplier;
     private float _currentGameBaseSpeed;
     private GameSpeedData _gameSpeedConfigData;
     private readonly IAssetBundleLoaderService _assetBundleLoaderService;
@@ -24,11 +25,6 @@ public class GameSpeedService : IGameSpeedService
         _currentGameBaseSpeed = _gameSpeedConfigData.BaseSpeed;
     }
 
-    public void SetCurrentBaseSpeed(float newSpeed)
-    {
-        _currentGameBaseSpeed = newSpeed;
-    }
-    
     public void SetBoostMode(bool isOn)
     {
         IsBoosting = isOn;

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -9,7 +10,18 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _rotationLerpFactor = 5f;
         private float _currentZRotation = 0;
-        
+        private Action<Collider> _onCollisionEnter;
+
+        public void SetupCallbacks(Action<Collider> onCollisionEnter)
+        {
+            _onCollisionEnter = onCollisionEnter;
+        }
+
+        private void OnTriggerEnter(Collider collision)
+        {
+            _onCollisionEnter?.Invoke(collision);
+        }
+
         private void RotateOnZAxis(float zRotation)
         {
             _rendererTransform.rotation = Quaternion.Euler(0,0,zRotation);

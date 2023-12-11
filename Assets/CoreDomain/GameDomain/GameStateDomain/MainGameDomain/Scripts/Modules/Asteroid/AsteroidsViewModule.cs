@@ -95,4 +95,15 @@ public class AsteroidsViewModule : IUpdatable
         if (_asteroidsIdsPassedPlayer.Contains(asteroid.ID))
             _asteroidsIdsPassedPlayer.Remove(asteroid.ID);
     }
+
+    public void DespawnAllAsteroids()
+    {
+        for (int i = 0; i < _asteroids.Count; i++)
+        {
+            _asteroids[i].Despawn();
+        }
+
+        _asteroids.Clear();
+        _asteroidsIdsPassedPlayer.Clear();
+    }
 }

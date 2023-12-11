@@ -33,6 +33,11 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score
         {
             _updateSubscriptionService.RegisterUpdatable(this);
         }
+
+        public void ResetScore()
+        {
+            _playerCurrentScore = 0;
+        }
         
         public void StopCountingScore()
         {

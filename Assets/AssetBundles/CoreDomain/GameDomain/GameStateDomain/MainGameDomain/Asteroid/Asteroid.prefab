@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4946742802473062700}
   - component: {fileID: 1667125807091016581}
   - component: {fileID: 591906296334911739}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 4946742802473062700}
+  ID: 
 --- !u!135 &591906296334911739
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -106,7 +107,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4946742802471063532}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 2.0661025

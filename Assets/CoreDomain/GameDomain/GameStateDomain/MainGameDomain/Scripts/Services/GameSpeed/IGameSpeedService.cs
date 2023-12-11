@@ -4,4 +4,5 @@ public interface IGameSpeedService
     float CurrentGameSpeed { get; }
     void LoadGameSpeedData();
     void SetBoostMode(bool isOn);
+    float BoostSpeedMultiplier { get; }
 }

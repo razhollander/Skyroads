@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ab9adcee0e6a419856f11519c09bc, type: 3}
   m_Name: PlayerSpaceShipData
   m_EditorClassIdentifier: 
-  MovementSpeed: 8
+  MovementSpeed: 12

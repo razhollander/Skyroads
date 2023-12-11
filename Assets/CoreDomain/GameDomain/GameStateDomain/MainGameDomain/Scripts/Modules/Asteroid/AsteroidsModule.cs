@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using CoreDomain.Services;
-using CoreDomain.Utils.Pools;
 using UnityEngine;
 using Unity.Mathematics;
 using Random = UnityEngine.Random;
@@ -13,6 +10,7 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
 
     private readonly SpawnAsteroidCommand.Factory _spawnAsteroidCommand;
     private readonly IUpdateSubscriptionService _updateSubscriptionService;
+    private readonly IGameSpeedService _gameSpeedService;
     private AsteroidsCreator _asteroidsCreator;
     private AsteroidsSpawnRateData _asteroidsSpawnRateData;
     private AsteroidData _asteroidData;
@@ -30,6 +28,7 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
     {
         _spawnAsteroidCommand = spawnAsteroidCommand;
         _updateSubscriptionService = updateSubscriptionService;
+        _gameSpeedService = gameSpeedService;
         _asteroidsCreator = new AsteroidsCreator(asteroidsPool, assetBundleLoaderService);
         _asteroidsViewModule = new AsteroidsViewModule(gameSpeedService, updateSubscriptionService, asteroidPassedPlayerCommand);
     }
@@ -38,7 +37,6 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
     {
         _asteroidsSpawnRateData = _asteroidsCreator.LoadAsteroidsSpawnRateData();
         _asteroidData = _asteroidsCreator.LoadAsteroidData();
-        _secondsUntilNextSpawn = 0;
     }
 
     public void StartSpawning()
@@ -47,12 +45,27 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
         _asteroidsViewModule.StartMovingAsteroids();
     }
 
+    public void Reset()
+    {
+        _asteroidsViewModule.DespawnAllAsteroids();
+        _secondsUntilNextSpawn = 0;
+        _secondsPassedSinceStartedSpawning = 0;
+        AsteroidsPassedPlayerCounter = 0;
+    }
+
+    public void StopSpawning()
+    {
+        RemoveListeners();
+        _asteroidsViewModule.StopMovingAsteroids();
+    }
+
     public void ResetTimeForNextSpawn()
     {
-        _secondsUntilNextSpawn = Mathf.Max(math.remap(0, _asteroidsSpawnRateData.ReachFinalSpawnRateAfterSeconds, 
+        var secondsUntilNextSpawn = math.remap(0, _asteroidsSpawnRateData.ReachFinalSpawnRateAfterSeconds,
             _asteroidsSpawnRateData.InitialSpawnRateInSeconds, _asteroidsSpawnRateData.FinalSpawnRateInSeconds,
-            _secondsPassedSinceStartedSpawning), _asteroidsSpawnRateData.FinalSpawnRateInSeconds);
-        Debug.Log($"Next spawn in: {_secondsUntilNextSpawn}");
+            _secondsPassedSinceStartedSpawning);
+        var maxSpawnRateInSeconds = _asteroidsSpawnRateData.FinalSpawnRateInSeconds;
+        _secondsUntilNextSpawn = Mathf.Max(secondsUntilNextSpawn, maxSpawnRateInSeconds);
     }
 
     private void AddListeners()
@@ -65,22 +78,13 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
         _updateSubscriptionService.UnregisterUpdatable(this);
     }
 
-    public void PauseAsteroids()
-    {
-        RemoveListeners();
-        _asteroidsViewModule.StopMovingAsteroids();
-    }
-    
-    public void Dispose()
-    {
-        RemoveListeners();
-        _asteroidsViewModule.StopMovingAsteroids();
-    }
-    
     public void ManagedUpdate()
     {
-        _secondsUntilNextSpawn -= Time.deltaTime;
-        _secondsPassedSinceStartedSpawning += Time.deltaTime;
+        var boostMultiplier = _gameSpeedService.IsBoosting ? _gameSpeedService.BoostSpeedMultiplier : 1;
+        var timePassedInFrame = Time.deltaTime * boostMultiplier;
+
+        _secondsUntilNextSpawn -= timePassedInFrame;
+        _secondsPassedSinceStartedSpawning += timePassedInFrame;
         
         if (_secondsUntilNextSpawn <= 0)
         {
@@ -103,12 +107,7 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
         _asteroidsViewModule.SetAsteroidPassedPlayer(asteroidId);
         AsteroidsPassedPlayerCounter++;
     }
-    
-    public void DespawnAsteroid(AsteroidView asteroid)
-    {
-        _asteroidsViewModule.RemoveAsteroid(asteroid);
-    }
-    
+
     public void SetAsteroidsPassedZPosition(float zPosition)
     {
         _asteroidsViewModule.SetAsteroidsPassedZPosition(zPosition);

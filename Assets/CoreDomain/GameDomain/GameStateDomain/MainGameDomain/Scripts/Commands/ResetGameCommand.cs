@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.GameKeyboardInputsModule;
+using CoreDomain.Scripts.Utils.Command;
+using UnityEngine;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameUi;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpaceship;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score;
 using CoreDomain.Scripts.Utils.Command;
 using CoreDomain.Services;
-using UnityEngine;
-
-public class BeginGameCommand : CommandSync<BeginGameCommand>
+public class ResetGameCommand : CommandSync<ResetGameCommand>
 {
     private readonly IFloorModule _floorModule;
     private readonly IAsteroidsModule _asteroidsModule;
@@ -18,9 +17,8 @@ public class BeginGameCommand : CommandSync<BeginGameCommand>
     private readonly IMainGameUiModule _mainGameUiModule;
     private readonly IPlayerSpaceshipModule _playerSpaceshipModule;
     private readonly ICameraService _cameraService;
-    private readonly IGameKeyboardInputsModule _gameKeyboardInputsModule;
 
-    public BeginGameCommand(
+    public ResetGameCommand(
         IFloorModule floorModule,
         IAsteroidsModule asteroidsModule,
         ITimePlayingModule timePlayingModule,
@@ -28,8 +26,7 @@ public class BeginGameCommand : CommandSync<BeginGameCommand>
         IScoreModule scoreModule,
         IMainGameUiModule mainGameUiModule,
         IPlayerSpaceshipModule playerSpaceshipModule,
-        ICameraService cameraService,
-        IGameKeyboardInputsModule gameKeyboardInputsModule)
+        ICameraService cameraService)
     {
         _floorModule = floorModule;
         _asteroidsModule = asteroidsModule;
@@ -39,21 +36,14 @@ public class BeginGameCommand : CommandSync<BeginGameCommand>
         _mainGameUiModule = mainGameUiModule;
         _playerSpaceshipModule = playerSpaceshipModule;
         _cameraService = cameraService;
-        _gameKeyboardInputsModule = gameKeyboardInputsModule;
     }
 
     public override void Execute()
     {
-        _gameKeyboardInputsModule.EnableInputs();
-        _floorModule.StartMovement();
-        _asteroidsModule.StartSpawning();
-        _scoreModule.StartCountingScore();
-        _timePlayingModule.StartTimer();
-        _highScoreModule.LoadLastHighScore();
-        _playerSpaceshipModule.EnableSpaceShipMovement(true);
-        _cameraService.SetCameraZoom(GameCameraType.World, true);
-
-        _mainGameUiModule.SwitchToInGameView(_highScoreModule.LastHighScore, _scoreModule.PlayerScore, _timePlayingModule.TimePlaying,
-            _asteroidsModule.AsteroidsPassedPlayerCounter);
+        _asteroidsModule.Reset();
+        _scoreModule.ResetScore();
+        _timePlayingModule.ResetTimer();
+        _playerSpaceshipModule.ResetSpaceShip();
+        _mainGameUiModule.HideGameOverPanel();
     }
 }

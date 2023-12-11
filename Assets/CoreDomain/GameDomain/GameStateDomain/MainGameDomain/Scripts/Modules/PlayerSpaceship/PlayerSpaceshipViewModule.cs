@@ -32,21 +32,20 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
 
             //var startPosition = _screenBoundsInWorldSpace * RelativeToScreenCenterStartPosition + _deviceScreenService.ScreenCenterPointInWorldSpace;
             _playerSpaceshipView.transform.position = new Vector3(0, 2.5f, 0);
-            RegisterListeners();
         }
         
         public void Dispose()
         {
-            UnegisterListeners();
+            UnregisterListeners();
             DestroySpaceSip();
         }
 
-        private void RegisterListeners()
+        public void RegisterListeners()
         {
             _updateSubscriptionService.RegisterUpdatable(this);
         }
         
-        private void UnegisterListeners()
+        public void UnregisterListeners()
         {
             _updateSubscriptionService.UnregisterUpdatable(this);
         }

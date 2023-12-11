@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Enemies;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameUi;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpaceship;
@@ -76,17 +77,14 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain
             _mainGameUiModule.SwitchToBeforeGameView();
             _audioService.PlayAudio(AudioClipName.ThemeSongName, AudioChannelType.Master, AudioPlayType.Loop);
 
-            var anyKeyDownObservable = Observable.EveryUpdate()
+            await WaitForAnyKeyPressed();
 
-                // Filter for key down events
-                .Where(_ => Input.anyKeyDown)
-
-                // Take the first event
-                .First();
-
-            await anyKeyDownObservable.ToTask();
-            Debug.Log("YAY");
             _beginGameCommand.Create().Execute();
+        }
+
+        private static async Task WaitForAnyKeyPressed()
+        {
+            await Observable.EveryUpdate().Where(_ => Input.anyKeyDown).First().ToTask();
         }
     }
 }

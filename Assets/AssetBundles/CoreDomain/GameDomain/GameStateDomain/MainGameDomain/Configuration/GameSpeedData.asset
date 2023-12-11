@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dce72ecdbc741578efda8530b0bc49b, type: 3}
   m_Name: GameSpeedData
   m_EditorClassIdentifier: 
-  BaseSpeed: 6
+  BaseSpeed: 40
   BoostSpeedMultiplier: 2

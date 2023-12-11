@@ -22,5 +22,6 @@ public class HighScoreModule : IHighScoreModule
     public void SaveHighScore(int highScore)
     {
         _dataPersistence.Save(HighScoreSaveKey, highScore);
+        LastHighScore = highScore;
     }
 }

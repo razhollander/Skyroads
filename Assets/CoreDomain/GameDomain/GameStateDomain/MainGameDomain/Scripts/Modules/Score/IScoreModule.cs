@@ -8,5 +8,6 @@
         void StartCountingScore();
         void StopCountingScore();
         void SetMultiplier(bool isOn);
+        void ResetScore();
     }
 }
