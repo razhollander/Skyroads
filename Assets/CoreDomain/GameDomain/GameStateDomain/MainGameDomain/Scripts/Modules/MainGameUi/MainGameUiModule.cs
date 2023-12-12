@@ -1,5 +1,3 @@
-using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Commands;
-using CoreDomain.Scripts.Utils.Command;
 using CoreDomain.Services;
 
 namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameUi
@@ -44,12 +42,6 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         {
             _viewModule.HideGameOverPanel();
         }
-        
-        private void OnPlayAgainClicked()
-        {
-            _resetGameCommand.Create().Execute();
-            _beginGameCommand.Create().Execute();
-        }
 
         public void Dispose()
         {
@@ -80,6 +72,12 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameU
         public void SwitchToBeforeGameView()
         {
             _viewModule.SwitchToBeforeGameView();
+        }
+        
+        private void OnPlayAgainClicked()
+        {
+            _resetGameCommand.Create().Execute();
+            _beginGameCommand.Create().Execute();
         }
     }
 }

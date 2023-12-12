@@ -6,8 +6,7 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
     {
         public Transform PlayerSpaceShipTransform { get; }
         void CreatePlayerSpaceship();
-        void Dispose();
-        public void SetSpaceShipMoveDirection(float xDirection);
+        void SetSpaceShipMoveDirection(float xDirection);
         void ResetSpaceShip();
         void EnableSpaceShipMovement(bool isEnabled);
         void SetXMovementBounds(float positiveXBound);

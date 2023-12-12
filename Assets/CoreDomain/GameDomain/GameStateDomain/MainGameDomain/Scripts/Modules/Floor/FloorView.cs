@@ -16,6 +16,7 @@ public class FloorView : MonoBehaviour
     private Vector2 _currentTextureOffset=Vector2.zero;
     private float _floorTextureScale;
     private float _floorYScale;
+    
     private void Awake()
     {
         _floorMaterial = _renderer.sharedMaterial;

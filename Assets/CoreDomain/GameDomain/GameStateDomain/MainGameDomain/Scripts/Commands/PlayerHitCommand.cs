@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.GameKeyboardInputsModule;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameUi;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpaceship;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score;
 using CoreDomain.Scripts.Utils.Command;
 using CoreDomain.Services;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
 
-public class PlayerHitCommand : Command<PlayerHitCommand>
+public class PlayerHitCommand : CommandSync<PlayerHitCommand>
 {
     private readonly IAsteroidsModule _asteroidsModule;
     private readonly IFloorModule _floorModule;
@@ -43,7 +39,7 @@ public class PlayerHitCommand : Command<PlayerHitCommand>
         _audioService = audioService;
     }
     
-    public override async UniTask Execute()
+    public override void Execute()
     {
         _keyboardInputsModule.DisableInputs();
         _asteroidsModule.StopSpawning();
@@ -54,7 +50,7 @@ public class PlayerHitCommand : Command<PlayerHitCommand>
         _audioService.PlayAudio(AudioClipName.HitSoundFXName, AudioChannelType.Fx, AudioPlayType.OneShot);
 
         bool isNewHighScore = _highScoreModule.LastHighScore < _scoreModule.PlayerScore;
-        
+
         if (isNewHighScore)
         {
             _highScoreModule.SaveHighScore(_scoreModule.PlayerScore);

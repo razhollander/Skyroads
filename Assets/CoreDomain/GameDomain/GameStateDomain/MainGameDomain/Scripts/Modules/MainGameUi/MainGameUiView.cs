@@ -1,8 +1,6 @@
 using System;
 using CoreDomain.Scripts.Utils.Command;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameUi
 {

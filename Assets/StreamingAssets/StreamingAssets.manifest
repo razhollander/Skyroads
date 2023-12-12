@@ -1,43 +1,31 @@
 ManifestFileVersion: 0
-CRC: 163657607
+CRC: 2107937226
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: coredomain/gamedomain/levels
-      Dependencies: {}
-    Info_1:
-      Name: coredomain/gamedomain/gamestatedomain/maingamedomain/playerbullet
-      Dependencies: {}
-    Info_2:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/playerspaceship
       Dependencies: {}
-    Info_3:
-      Name: coredomain/gamedomain/gamestatedomain/maingamedomain/enemies
-      Dependencies: {}
-    Info_4:
+    Info_1:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/maingameui
       Dependencies: {}
-    Info_5:
-      Name: coredomain/gamedomain/gamestatedomain/lobbydomain/lobbyui
-      Dependencies: {}
-    Info_6:
+    Info_2:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/asteroid
       Dependencies: {}
-    Info_7:
+    Info_3:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/floor
       Dependencies: {}
-    Info_8:
+    Info_4:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/gamespeed
       Dependencies: {}
-    Info_9:
+    Info_5:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/playerspaceship
       Dependencies: {}
-    Info_10:
+    Info_6:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/asteroidsspawnrate
       Dependencies: {}
-    Info_11:
+    Info_7:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/gamescore
       Dependencies: {}
-    Info_12:
+    Info_8:
       Name: coredomain/gamedomain/gamestatedomain/maingamedomain/configuration/asteroid
       Dependencies: {}

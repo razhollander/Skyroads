@@ -15,7 +15,7 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
     private AsteroidsSpawnRateData _asteroidsSpawnRateData;
     private AsteroidData _asteroidData;
     private float _secondsUntilNextSpawn;
-    private float _secondsPassedSinceStartedSpawning = 0;
+    private float _secondsPassedSinceStartedSpawning;
     private AsteroidsViewModule _asteroidsViewModule;
 
     public AsteroidsModule(
@@ -68,16 +68,6 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
         _secondsUntilNextSpawn = Mathf.Max(secondsUntilNextSpawn, maxSpawnRateInSeconds);
     }
 
-    private void AddListeners()
-    {
-        _updateSubscriptionService.RegisterUpdatable(this);
-    }
-    
-    private void RemoveListeners()
-    {
-        _updateSubscriptionService.UnregisterUpdatable(this);
-    }
-
     public void ManagedUpdate()
     {
         var boostMultiplier = _gameSpeedService.IsBoosting ? _gameSpeedService.BoostSpeedMultiplier : 1;
@@ -111,5 +101,15 @@ public class AsteroidsModule: IUpdatable, IAsteroidsModule
     public void SetAsteroidsPassedZPosition(float zPosition)
     {
         _asteroidsViewModule.SetAsteroidsPassedZPosition(zPosition);
+    }
+    
+    private void AddListeners()
+    {
+        _updateSubscriptionService.RegisterUpdatable(this);
+    }
+    
+    private void RemoveListeners()
+    {
+        _updateSubscriptionService.UnregisterUpdatable(this);
     }
 }

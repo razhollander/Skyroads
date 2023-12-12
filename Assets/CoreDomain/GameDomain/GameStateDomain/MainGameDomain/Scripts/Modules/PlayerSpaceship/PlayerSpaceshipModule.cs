@@ -1,14 +1,13 @@
 using CoreDomain.Services;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpaceship
 {
     public class PlayerSpaceshipModule : IPlayerSpaceshipModule
     {
-        private readonly PlayerHitCommand.Factory _playerHitCommand;
         public Transform PlayerSpaceShipTransform => _playerSpaceshipViewModule.PlayerSpaceShipTransform;
         
+        private readonly PlayerHitCommand.Factory _playerHitCommand;
         private readonly PlayerSpaceshipCreator _playerSpaceshipCreator;
         private readonly PlayerSpaceshipViewModule _playerSpaceshipViewModule;
         private PlayerSpaceshipData _playerSpaceshipData;
@@ -59,12 +58,8 @@ namespace CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpa
             
             if (didCollideWithAsteroid)
             {
-                _playerHitCommand.Create().Execute().Forget();
+                _playerHitCommand.Create().Execute();
             }
-        }
-        public void Dispose()
-        {
-            _playerSpaceshipViewModule.Dispose();
         }
 
         public void SetSpaceShipMoveDirection(float xDirection)

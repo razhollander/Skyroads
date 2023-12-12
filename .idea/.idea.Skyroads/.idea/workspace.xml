@@ -123,7 +123,7 @@
       <workItem from="1702042609832" duration="5538000" />
       <workItem from="1702110276539" duration="934000" />
       <workItem from="1702111554212" duration="11260000" />
-      <workItem from="1702129418725" duration="43466000" />
+      <workItem from="1702129418725" duration="45877000" />
     </task>
     <servers />
   </component>
@@ -145,38 +145,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/PlayerSpaceship/PlayerSpaceshipViewModule.cs</url>
-          <line>59</line>
-          <properties documentPath="C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads\Assets\CoreDomain\GameDomain\GameStateDomain\MainGameDomain\Scripts\Modules\PlayerSpaceship\PlayerSpaceshipViewModule.cs" initialLine="63" containingFunctionPresentation="method 'TrySetMovementVelocity'">
-            <startOffsets>
-              <option value="2018" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2082" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/Scripts/Modules/PlayerSpaceship/PlayerSpaceshipView.cs</url>
-          <line>41</line>
-          <properties documentPath="C:\Users\Raz\Documents\PF\Raz\Work\Dev\Unity\Skyroads\Assets\CoreDomain\GameDomain\GameStateDomain\MainGameDomain\Scripts\Modules\PlayerSpaceship\PlayerSpaceshipView.cs" initialLine="41" containingFunctionPresentation="method 'LerpToRotation'">
-            <startOffsets>
-              <option value="1376" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1377" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

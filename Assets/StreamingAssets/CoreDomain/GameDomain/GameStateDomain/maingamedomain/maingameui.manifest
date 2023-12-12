@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3626609389
+CRC: 1068838647
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 221e29a2d08ac84396027b5cfed58650
+    Hash: 16c5c1f72b2df64f19b3524506aca64b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 3ab401161b0389d5561b1e724dd95d11
@@ -63,12 +63,6 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.TMP_FontWeightPair
 - AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphValueRecord
-- AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.VertexGradient
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.ArgumentCache
@@ -100,4 +94,7 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.SpriteState
 Assets:
 - Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/MainGameUi/MainGameUiCanvas.prefab
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/MainGameUi/Fonts/PublicPixel-z84yD.ttf
+- Assets/AssetBundles/CoreDomain/GameDomain/GameStateDomain/MainGameDomain/MainGameUi/Fonts/PublicPixel-z84yD
+  SDF.asset
 Dependencies: []
