@@ -17,7 +17,6 @@ namespace CoreDomain
         {
             Container.BindInterfacesTo<UnityLogger>().AsSingle().NonLazy();
             Container.BindInterfacesTo<CameraService>().AsSingle().NonLazy();
-            Container.BindInterfacesTo<DeviceScreenService>().AsSingle().NonLazy();
             Container.BindInterfacesTo<SceneLoaderService>().AsSingle().NonLazy();
             Container.BindInterfacesTo<AssetBundleLoaderService>().AsSingle().NonLazy();
             Container.BindInterfacesTo<StateMachineService>().AsSingle().NonLazy();

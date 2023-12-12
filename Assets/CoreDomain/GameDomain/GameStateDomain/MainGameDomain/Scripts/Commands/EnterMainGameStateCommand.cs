@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Enemies;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameUi;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpaceship;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score;

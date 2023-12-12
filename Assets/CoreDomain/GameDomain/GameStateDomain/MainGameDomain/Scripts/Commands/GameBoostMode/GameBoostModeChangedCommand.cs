@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerBullet;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpaceship;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score;
 using CoreDomain.Scripts.Utils.Command;
@@ -12,7 +11,6 @@ public class GameBoostModeChangedCommand : CommandOneParameter<GameBoostModeChan
 {
     private readonly GameBoostModeChangedCommandData _commandData;
     private readonly IPlayerSpaceshipModule _playerSpaceshipModule;
-    private readonly IPlayerBulletModule _playerBulletModule;
     private readonly ICameraService _cameraService;
     private readonly IGameSpeedService _gameSpeedService;
     private readonly IFloorModule _floorModule;
@@ -21,7 +19,6 @@ public class GameBoostModeChangedCommand : CommandOneParameter<GameBoostModeChan
     public GameBoostModeChangedCommand(
         GameBoostModeChangedCommandData commandData,
         IPlayerSpaceshipModule playerSpaceshipModule,
-        IPlayerBulletModule playerBulletModule,
         ICameraService cameraService,
         IGameSpeedService gameSpeedService,
         IFloorModule floorModule,
@@ -29,7 +26,6 @@ public class GameBoostModeChangedCommand : CommandOneParameter<GameBoostModeChan
     {
         _commandData = commandData;
         _playerSpaceshipModule = playerSpaceshipModule;
-        _playerBulletModule = playerBulletModule;
         _cameraService = cameraService;
         _gameSpeedService = gameSpeedService;
         _floorModule = floorModule;
