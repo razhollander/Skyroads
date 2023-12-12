@@ -35,9 +35,9 @@ namespace CoreDomain.GameDomain
 
         private void UpdateApplicationSettings()
         {
+            Screen.SetResolution(1920, 1080, true);
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             Application.targetFrameRate = 60;
-            Screen.fullScreen = true;
         }
     }
 }
