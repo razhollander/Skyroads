@@ -5,6 +5,7 @@ using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.MainGameUi;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.PlayerSpaceship;
 using CoreDomain.GameDomain.GameStateDomain.MainGameDomain.Modules.Score;
 using CoreDomain.Scripts.Utils.Command;
+using CoreDomain.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public class PlayerHitCommand : Command<PlayerHitCommand>
     private readonly IPlayerSpaceshipModule _playerSpaceshipModule;
     private readonly ITimePlayingModule _timePlayingModule;
     private readonly IMainGameUiModule _mainGameUiModule;
+    private readonly IAudioService _audioService;
 
     public PlayerHitCommand(
         IAsteroidsModule asteroidsModule,
@@ -27,7 +29,8 @@ public class PlayerHitCommand : Command<PlayerHitCommand>
         IScoreModule scoreModule,
         IPlayerSpaceshipModule playerSpaceshipModule,
         ITimePlayingModule timePlayingModule,
-        IMainGameUiModule mainGameUiModule)
+        IMainGameUiModule mainGameUiModule,
+        IAudioService audioService)
     {
         _asteroidsModule = asteroidsModule;
         _floorModule = floorModule;
@@ -37,6 +40,7 @@ public class PlayerHitCommand : Command<PlayerHitCommand>
         _playerSpaceshipModule = playerSpaceshipModule;
         _timePlayingModule = timePlayingModule;
         _mainGameUiModule = mainGameUiModule;
+        _audioService = audioService;
     }
     
     public override async UniTask Execute()
@@ -47,6 +51,7 @@ public class PlayerHitCommand : Command<PlayerHitCommand>
         _scoreModule.StopCountingScore();
         _playerSpaceshipModule.EnableSpaceShipMovement(false);
         _timePlayingModule.StopTimer();
+        _audioService.PlayAudio(AudioClipName.HitSoundFXName, AudioChannelType.Fx, AudioPlayType.OneShot);
 
         bool isNewHighScore = _highScoreModule.LastHighScore < _scoreModule.PlayerScore;
         

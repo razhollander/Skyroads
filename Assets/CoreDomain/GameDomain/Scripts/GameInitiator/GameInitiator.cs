@@ -19,15 +19,9 @@ namespace CoreDomain.GameDomain
         private void Start()
         {
             UpdateApplicationSettings();
-            InitializeServices();
             EnterToLobbyGameState();
         }
-
-        private void InitializeServices()
-        {
-            
-        }
-
+        
         private void EnterToLobbyGameState()
         {
             _stateMachine.EnterInitialGameState(_mainGameStateFactory.Create(new MainGameStateEnterData()));
